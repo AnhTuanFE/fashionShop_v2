@@ -1,0 +1,46 @@
+.voucherContainer {
+}
+.subTitle {
+  margin-bottom: var(--space-20);
+}
+
+.title {
+  font-size: var(20px);
+}
+
+.voucherListWrapper {
+  padding: var(--space-12);
+  .voucherList {
+    max-height: 400px;
+  }
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-16);
+}
+
+.actionEachVoucher {
+  width: 30px;
+}
+
+.actionEditVoucher {
+  color: var(--primary-color);
+}
+
+.actionDeleteVoucher {
+  color: var(--error-color);
+}
+
+.searchVouchers {
+  width: 200px;
+}
+.searchVouchers + .searchVouchers {
+  margin-left: var(--space-16);
+}
+
+.pagination {
+  display: flex;
+  justify-content: end;
+}
