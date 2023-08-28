@@ -5,6 +5,8 @@ import { statusDescription, stepShipping } from '../../../../constants/ordersCon
 import { formatMoney } from '../../../../utils/formatMoney';
 import { Badge, Chip, Tooltip, Typography } from '@mui/material';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import { paymentStatusConstants } from '../../../../constants/paymentConstants';
+
 const Orders = (props) => {
   const { orders } = props;
 
@@ -48,7 +50,7 @@ const Orders = (props) => {
                     {moment(order.createdAt).format('hh:mm MM/DD/YYYY')}
                   </Typography>
                 </td>
-                <td style={{ position: 'relative' }}>
+                {/* <td style={{ position: 'relative' }}>
                   {order?.paymentInformation?.paid ||
                   (order?.statusHistory?.find((step) => step?.status === 'delivered') &&
                     order?.statusHistory?.length > 2) ? (
@@ -56,8 +58,15 @@ const Orders = (props) => {
                   ) : (
                     <Chip size="small" color={'primary'} variant="outlined" label="Chưa thanh toán" />
                   )}
+                </td> */}
+                <td style={{ position: 'relative' }}>
+                  <Chip
+                    size="small"
+                    color={paymentStatusConstants[order.paymentInformation.status.state].chipColor}
+                    variant="outlined"
+                    label={order.paymentInformation.status.description}
+                  />
                 </td>
-
                 <td style={{ position: 'relative' }}>
                   <Badge badgeContent={order?.status === 'placed' ? 'Mới' : null} color="error">
                     <Chip
