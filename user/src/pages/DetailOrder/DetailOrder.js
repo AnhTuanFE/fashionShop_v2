@@ -389,7 +389,7 @@ const DetailOrder = () => {
                     ) : null}
                 </Box>
                 <Divider />
-                {order?.status === 'placed' && !order?.paymentInformation?.paid ? <ModalCancelOrder /> : null}
+                {order?.status === 'placed' || order?.status === 'confirm' ? <ModalCancelOrder /> : null}
             </Card>
 
             <Card className="p-3 mt-2">

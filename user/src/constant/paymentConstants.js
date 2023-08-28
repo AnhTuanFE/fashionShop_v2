@@ -1,4 +1,4 @@
-export const statusErrorMomo = {
+const statusErrorMomo = {
     8000: 'Giao dịch đang ở trạng thái cần được người dùng xác nhận thanh toán lại.',
     7000: 'Giao dịch đang được xử lý.',
     7002: 'Giao dịch đang được xử lý bởi nhà cung cấp loại hình thanh toán.',
@@ -38,3 +38,17 @@ export const statusErrorMomo = {
     10: 'Hệ thống đang được bảo trì.',
     99: 'Lỗi không xác định.',
 };
+
+const paymentStatusConstants = {
+    initialized: {
+        chipColor: 'default',
+    },
+    paid: {
+        chipColor: 'success',
+    },
+    refunded: {
+        chipColor: 'secondary',
+    },
+};
+
+export { statusErrorMomo, paymentStatusConstants };

@@ -11,6 +11,8 @@ import { Button, Card, Chip, CircularProgress, Pagination, Typography } from '@m
 import { stepShipping } from '~/pages/DetailOrder/DetailOrder';
 import { getUserDetails } from '~/Redux/Actions/userActions';
 import useSearchParamsCustom from '~/hooks/useSearchParamCustom';
+import { paymentStatusConstants } from '~/constant/paymentConstants';
+
 const MyOrders = () => {
     const dispatch = useDispatch();
     const myOrders = useSelector((state) => state.myOrders);
@@ -117,8 +119,9 @@ const MyOrders = () => {
                                                     {order._id}
                                                 </a>
                                             </td>
-                                            <td style={{ position: 'relative' }}>
+                                            {/* <td style={{ position: 'relative' }}>
                                                 {order?.paymentInformation?.paid ||
+                                                order?.paymentInformation?.status.state === 'paid' ||
                                                 (order?.statusHistory?.find((step) => step?.status === 'delivered') &&
                                                     order?.statusHistory?.length > 2) ? (
                                                     <Chip
@@ -135,6 +138,16 @@ const MyOrders = () => {
                                                         label="Chưa thanh toán"
                                                     />
                                                 )}
+                                            </td> */}
+                                            <td style={{ position: 'relative' }}>
+                                                <Chip
+                                                    color={
+                                                        paymentStatusConstants[order.paymentInformation.status.state]
+                                                            .chipColor
+                                                    }
+                                                    variant="outlined"
+                                                    label={order.paymentInformation.status.description}
+                                                />
                                             </td>
                                             <td>
                                                 <Chip
