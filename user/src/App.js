@@ -40,7 +40,7 @@ const App = () => {
                         key={option.path}
                         {...option}
                         component={
-                            <DefaultLayout {...option} name={option.name || 'Fashionshop'}>
+                            <DefaultLayout {...option} name={option.name || 'BlueShop'}>
                                 {option.component}
                             </DefaultLayout>
                         }
@@ -48,7 +48,7 @@ const App = () => {
                 ))}
                 {publicRouter.map((option) => {
                     const renderComponent = () => (
-                        <DefaultLayout {...option} name={option.name || 'Fashionshop'}>
+                        <DefaultLayout {...option} name={option.name || 'BlueShop'}>
                             {option.component}
                         </DefaultLayout>
                     );
