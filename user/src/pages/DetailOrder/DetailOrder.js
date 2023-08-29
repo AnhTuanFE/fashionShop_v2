@@ -244,7 +244,8 @@ const DetailOrder = () => {
             <div className="content-header"></div>
             <Card
                 sx={{
-                    padding: 4,
+                    pt: 4,
+                    px: 2,
                     minHeight: '195px',
                     alignItems: 'center',
                     display: 'flex',
@@ -253,30 +254,42 @@ const DetailOrder = () => {
                 }}
             >
                 <Box
-                    className="d-flex justify-content-end align-items-lg-center"
-                    sx={{ width: '100%', mb: 2, borderBottom: '1px solid var(--border-color)', pb: 1 }}
+                    className="d-flex align-items-lg-center"
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        width: '100%',
+                        mb: 2,
+                        borderBottom: '1px solid var(--border-color)',
+                        pb: 1,
+                    }}
                 >
                     <Typography component="div" variant="body1" color="text.primary">
                         MÃ ĐƠN HÀNG: {order?._id.toUpperCase()}
                     </Typography>
                     {paymentMethod === PAY_WITH_MOMO.toString() &&
-                    (lastStatus === 'placed' || lastStatus === 'confirm') &&
-                    !order?.paymentInformation?.paid ? (
-                        <a href={order?.paymentInformation?.payUrl}>
-                            <Tooltip
-                                title={`Giao dịch sẽ hết hạn sau ${moment(order?.paymentInformation.createdAt)
-                                    .add(1, 'hour')
-                                    .add(33, 'minutes')
-                                    .format('hh:mm DD/MM/YYYY')}`}
-                            >
-                                <Button sx={{ ml: 3 }} variant="contained">
-                                    THANH TOÁN
-                                </Button>
-                            </Tooltip>
-                        </a>
-                    ) : null}
+                        (lastStatus === 'placed' || lastStatus === 'confirm') &&
+                        !order?.paymentInformation?.paid && (
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <Typography component="div" variant="body1" color="text.primary">
+                                    Đơn hàng sẽ hết hạn vào{' '}
+                                    {moment(order?.paymentInformation.createdAt).format('hh:mm DD/MM/YYYY')}
+                                </Typography>
+                                <a href={order?.paymentInformation?.payUrl}>
+                                    <Tooltip
+                                        title={`Giao dịch sẽ hết hạn sau ${moment(
+                                            order?.paymentInformation.createdAt,
+                                        ).format('hh:mm DD/MM/YYYY')}`}
+                                    >
+                                        <Button sx={{ ml: 3 }} variant="contained">
+                                            THANH TOÁN NGAY
+                                        </Button>
+                                    </Tooltip>
+                                </a>
+                            </div>
+                        )}
                 </Box>
-
                 {loading ? (
                     <CircularProgress />
                 ) : (
