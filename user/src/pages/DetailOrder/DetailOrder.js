@@ -273,8 +273,7 @@ const DetailOrder = () => {
                         !order?.paymentInformation?.paid && (
                             <div style={{ display: 'flex', alignItems: 'center' }}>
                                 <Typography component="div" variant="body1" color="text.primary">
-                                    Đơn hàng sẽ hết hạn vào{' '}
-                                    {moment(order?.paymentInformation.createdAt).format('hh:mm DD/MM/YYYY')}
+                                    Đơn hàng sẽ hết hạn vào {moment(order?.expiredAt).format('HH:mm:ss DD/MM/YYYY')}
                                 </Typography>
                                 <a href={order?.paymentInformation?.payUrl}>
                                     <Tooltip
