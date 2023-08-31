@@ -173,7 +173,7 @@ const Header = () => {
                                     }}
                                 >
                                     <Link className="navbar-brand" to="/">
-                                        <img alt="logo" src="/images/logo2.png" />
+                                        <img alt="logo" src="/images/logo.png" />
                                     </Link>
                                 </div>
                                 <div

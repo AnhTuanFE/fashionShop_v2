@@ -7,6 +7,8 @@ import { Badge, Chip, Tooltip, Typography } from '@mui/material';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { paymentStatusConstants } from '../../../../constants/paymentConstants';
 
+const ORDER_EXPIRY_LIMIT_TIME_IN_MILISECONDS = 1800000; //30 minutes
+
 const Orders = (props) => {
   const { orders } = props;
 
@@ -68,7 +70,16 @@ const Orders = (props) => {
                   />
                 </td>
                 <td style={{ position: 'relative' }}>
-                  <Badge badgeContent={order?.status === 'placed' ? 'Mới' : null} color="error">
+                  <Badge
+                    badgeContent={
+                      order?.status === 'placed'
+                        ? Math.abs(new Date(order.expiredAt) - new Date()) <= ORDER_EXPIRY_LIMIT_TIME_IN_MILISECONDS
+                          ? 'Sắp hết hạn'
+                          : 'Mới'
+                        : null
+                    }
+                    color="error"
+                  >
                     <Chip
                       size="small"
                       color={stepShipping[status]?.color || 'default'}
