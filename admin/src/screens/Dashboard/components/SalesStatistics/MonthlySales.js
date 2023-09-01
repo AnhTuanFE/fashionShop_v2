@@ -4,7 +4,7 @@ const MonthlySales = () => {
       <div className="card mb-4 shadow-sm">
         <article className="card-body">
           <iframe
-            title="monthlyUsers"
+            title="monthlySales"
             style={{
               background: '#FFFFFF',
               border: 'none',

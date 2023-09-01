@@ -4,7 +4,7 @@ const BestSellingCategories = () => {
       <div className="card mb-4 shadow-sm">
         <article className="card-body">
           <iframe
-            title="monthlyUsers"
+            title="bestSellingCategories"
             style={{
               background: '#FFFFFF',
               border: 'none',

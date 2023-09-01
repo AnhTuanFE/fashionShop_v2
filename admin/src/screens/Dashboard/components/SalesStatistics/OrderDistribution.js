@@ -4,7 +4,7 @@ const OrderDistribution = () => {
       <div className="card mb-4 shadow-sm">
         <article className="card-body">
           <iframe
-            title="monthlyUsers"
+            title="orderDistribution"
             style={{
               background: '#FFFFFF',
               border: 'none',
