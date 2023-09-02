@@ -25,7 +25,7 @@ import DiscountIcon from '@mui/icons-material/Discount';
 import moment from 'moment';
 
 import WrapConfirmModal from '~/components/Modal/WrapConfirmModal';
-import usePlaceOrder, { PAY_WITH_CASH, PAY_WITH_MOMO } from './hook/usePlaceOrder';
+import usePlaceOrder, { PAY_WITH_CASH, PAY_WITH_MOMO, PAY_WITH_ATM, PAY_WITH_CREDIT_CART } from './hook/usePlaceOrder';
 import styles from './PlaceOrder.module.scss';
 import ModalAddress from './components/ModalAddress/ModalAddress';
 import { formatMoney } from '~/utils/formatMoney';
@@ -323,6 +323,16 @@ const PlaceOrderScreen = ({ history }) => {
                                 value={PAY_WITH_MOMO}
                                 control={<Radio size="small" />}
                                 label="Thanh toán qua momo"
+                            />
+                            <FormControlLabel
+                                value={PAY_WITH_ATM}
+                                control={<Radio size="small" />}
+                                label="Thanh toán thẻ ATM nội địa"
+                            />
+                            <FormControlLabel
+                                value={PAY_WITH_CREDIT_CART}
+                                control={<Radio size="small" />}
+                                label="Thanh toán thẻ quốc tế"
                             />
                         </RadioGroup>
                     </FormControl>
