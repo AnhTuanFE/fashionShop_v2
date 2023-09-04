@@ -187,9 +187,9 @@ export const resetPassWord = (resetPasswordToken, data, history) => async (dispa
 export const getUserDetails = (id, setLoadingFetchUserShipping) => async (dispatch, getState) => {
     try {
         dispatch({ type: USER_DETAILS_REQUEST });
-        const { data } = await request.get(`/users/${id}`);
+        const { data } = await request.get(`/users/profile`);
         setLoadingFetchUserShipping && setLoadingFetchUserShipping(false);
-        dispatch({ type: USER_DETAILS_SUCCESS, payload: data?.data?.user });
+        dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
     } catch (error) {
         const message = error.response && error.response.data.message ? error.response.data.message : error.message;
         setLoadingFetchUserShipping && setLoadingFetchUserShipping(false);
@@ -207,11 +207,10 @@ export const updateUserProfile = (user, handleAfterFetch) => async (dispatch, ge
         dispatch({ type: USER_UPDATE_PROFILE_REQUEST });
 
         const { data } = await request.put(`/users/profile`, user);
-
         toast.success('Cập nhật thông tin thành công', Toastobjects);
         dispatch({
             type: USER_UPDATE_PROFILE_SUCCESS,
-            payload: { ...data?.data.user, accessToken: data?.data.accessToken },
+            payload: { ...data, accessToken: data?.accessToken },
         });
 
         handleAfterFetch.success();

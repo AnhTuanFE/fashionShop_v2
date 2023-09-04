@@ -196,7 +196,7 @@ const ProfileTabs = () => {
             updateUserProfile({
                 id: user._id,
                 name,
-                email,
+                // email,
                 phone,
                 address: { province, district, ward, specificAddress },
                 gender,
