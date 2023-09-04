@@ -70,7 +70,7 @@ export const listUser = () => async (dispatch, getState) => {
 
     const { data } = await request.get(`/users`);
 
-    dispatch({ type: USER_LIST_SUCCESS, payload: data?.data?.users || [] });
+    dispatch({ type: USER_LIST_SUCCESS, payload: data || [] });
   } catch (error) {
     const message = error.response && error.response.data.message ? error.response.data.message : error.message;
     dispatch({
