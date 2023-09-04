@@ -296,10 +296,10 @@ export const AddShippingAddress =
         try {
             dispatch({ type: SHIPPING_ADDRESS_REQUEST });
             const { data } = await request.post(`/users/address/add-user-address`, address);
-            const newAddress = data?.data?.addressList?.at(-1);
+            const newAddress = data.at(-1);
 
             handleAfterFetch.success('Thêm địa chỉ giao hàng thành công', newAddress);
-            dispatch({ type: SHIPPING_ADDRESS_SUCCESS, payload: data?.data?.addressList || [] });
+            dispatch({ type: SHIPPING_ADDRESS_SUCCESS, payload: data || [] });
         } catch (error) {
             const message = error.response && error.response.data.message ? error.response.data.message : error.message;
             handleAfterFetch.error(message);
@@ -339,7 +339,7 @@ export const UpdateShippingAddress =
             dispatch({ type: SHIPPING_ADDRESS_REQUEST });
             const { data } = await request.put(`/users/address/${id}/update-user-address`, address);
             handleAfterFetch.success('Cập nhật địa chỉ giao hàng thành công', address);
-            dispatch({ type: SHIPPING_ADDRESS_SUCCESS, payload: data?.data?.addressList || [] });
+            dispatch({ type: SHIPPING_ADDRESS_SUCCESS, payload: data || [] });
         } catch (error) {
             const message = error.response && error.response.data.message ? error.response.data.message : error.message;
             handleAfterFetch.error(message);
