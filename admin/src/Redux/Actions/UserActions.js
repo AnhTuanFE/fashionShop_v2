@@ -25,7 +25,7 @@ export const login = (email, password, handleLogin) => async (dispatch) => {
     dispatch({ type: USER_LOGIN_REQUEST });
     const newPassword = await hashPassword(password);
     const { data } = await axios.post(`${API_FASHIONSHOP}users/login`, { email, password: newPassword });
-    if (data?.data?.user?.role !== 'admin') {
+    if (data?.user?.role !== 'admin') {
       toast.error('Bạn không có quyền truy cập', ToastObjects);
       dispatch({
         type: USER_LOGIN_FAIL,
@@ -33,14 +33,14 @@ export const login = (email, password, handleLogin) => async (dispatch) => {
     } else {
       dispatch({
         type: USER_LOGIN_SUCCESS,
-        payload: { ...data?.data?.user, accessToken: data?.data?.accessToken, refreshToken: data?.data.refreshToken },
+        payload: { ...data?.user, accessToken: data?.accessToken, refreshToken: data?.refreshToken },
       });
       localStorage.setItem(
         'userInfo',
         JSON.stringify({
-          ...data?.data?.user,
-          accessToken: data?.data?.accessToken,
-          refreshToken: data?.data.refreshToken,
+          ...data?.user,
+          accessToken: data?.accessToken,
+          refreshToken: data?.refreshToken,
         }),
       );
       handleLogin.success();

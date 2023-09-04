@@ -49,12 +49,12 @@ export const login = (email, password) => async (dispatch) => {
         localStorage.setItem(
             'userInfo',
             JSON.stringify({
-                refreshToken: data?.data.refreshToken,
-                accessToken: data?.data.accessToken,
+                refreshToken: data?.refreshToken,
+                accessToken: data?.accessToken,
             }),
         );
         window.location.href = '/';
-        await dispatch({ type: USER_LOGIN_SUCCESS, payload: data?.data.user });
+        await dispatch({ type: USER_LOGIN_SUCCESS, payload: data?.user });
     } catch (error) {
         const message = error.response && error.response.data.message ? error.response.data.message : error.message;
         dispatch({
