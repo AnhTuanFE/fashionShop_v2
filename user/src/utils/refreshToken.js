@@ -15,15 +15,15 @@ const refreshToken = async (error) => {
     try {
         const { data } = await verifyRefreshToken(refreshToken);
         setLocalStorage(USER_INFO_KEY, {
-            accessToken: data?.data.accessToken,
-            refreshToken: data?.data.refreshToken,
+            accessToken: data?.accessToken,
+            refreshToken: data?.refreshToken,
         });
         let config = error.config;
 
         await axios({
             ...config,
             headers: {
-                Authorization: `Bearer ${data?.data.accessToken}`,
+                Authorization: `Bearer ${data?.accessToken}`,
             },
         });
         requestTimes = 0;
