@@ -364,7 +364,6 @@ const PlaceOrderScreen = ({ history }) => {
                                 Khuyến mãi:
                             </Typography>
                             <Typography sx={{ textAlign: 'end' }} variant="body1">
-                                -{' '}
                                 {loadingApplyVoucher ? (
                                     <CircularProgress size={15} />
                                 ) : (

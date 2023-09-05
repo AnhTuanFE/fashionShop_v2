@@ -34,7 +34,7 @@ export const getPriceIsReducedAfterApplyVoucher =
                 discountCode: voucher?.code,
                 orderItems,
             });
-            afterFetchPriceIsReduced?.success(data.data, voucher);
+            afterFetchPriceIsReduced?.success(data, voucher);
         } catch (error) {
             const message = error.response && error.response.data.message ? error.response.data.message : error.message;
             afterFetchPriceIsReduced.error(message);
