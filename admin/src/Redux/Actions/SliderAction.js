@@ -24,7 +24,7 @@ export const ListSlider = () => async (dispatch) => {
   try {
     dispatch({ type: SLIDER_LIST_REQUEST });
     const { data } = await request.get(`/banners`);
-    dispatch({ type: SLIDER_LIST_SUCCESS, payload: data?.data || { banners: [], sliders: [] } });
+    dispatch({ type: SLIDER_LIST_SUCCESS, payload: data || { banners: [], sliders: [] } });
   } catch (error) {
     dispatch({
       type: SLIDER_LIST_FAIL,

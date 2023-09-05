@@ -11,7 +11,7 @@ export const Sliderload = (
         case SLIDER_SUCCESS:
             return {
                 loading: false,
-                data: action.payload?.data,
+                data: action.payload,
             };
         case SLIDER_FAIL:
             return { loading: false, error: action.payload };
