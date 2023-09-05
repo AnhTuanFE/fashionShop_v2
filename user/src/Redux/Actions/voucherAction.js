@@ -16,7 +16,7 @@ export const getMyVouchers = () => async (dispatch) => {
         dispatch({ type: MY_VOUCHER_REQUEST });
         const { data } = await request.get('/users/discount-code/get-user-discount-code-list');
 
-        dispatch({ type: MY_VOUCHER_SUCCESS, payload: data?.data?.discountCodeList });
+        dispatch({ type: MY_VOUCHER_SUCCESS, payload: data });
     } catch (error) {
         const message = error.response && error.response.data.message ? error.response.data.message : error.message;
         dispatch({
@@ -68,17 +68,16 @@ export const addVoucher =
             const { publicVouchers } = getState();
             dispatch({ type: ADD_VOUCHER_REQUEST });
             const { data } = await request.post('/users/discount-code/user-add-discount-code', {
-
                 discountCode: code,
             });
-            dispatch({ type: ADD_VOUCHER_SUCCESS, payload: data?.data?.discountCode });
+            dispatch({ type: ADD_VOUCHER_SUCCESS, payload: data });
             const newPublicVoucher = publicVouchers?.vouchers.map((voucher) => {
                 if (voucher?.code === code) {
                     return { ...voucher, isAdd: true };
                 } else return voucher;
             });
             handleAfterFetch?.success();
-            dispatch({ type: MY_VOUCHER_SUCCESS, payload: data?.data?.discountCodeList });
+            dispatch({ type: MY_VOUCHER_SUCCESS, payload: data });
             dispatch({ type: PUBLIC_VOUCHER_SUCCESS, payload: newPublicVoucher || [] });
         } catch (error) {
             const message = error.response && error.response.data.message ? error.response.data.message : error.message;
