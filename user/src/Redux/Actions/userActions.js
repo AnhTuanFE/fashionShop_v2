@@ -357,7 +357,7 @@ export const RemoveShippingAddress =
             dispatch({ type: SHIPPING_ADDRESS_REQUEST });
             const { data } = await request.delete(`/users/address/${id}/remove-user-address`);
             handleAfterFetch.success('Xóa địa chỉ giao hàng thành công');
-            dispatch({ type: SHIPPING_ADDRESS_SUCCESS, payload: data?.data?.addressList || [] });
+            dispatch({ type: SHIPPING_ADDRESS_SUCCESS, payload: data || [] });
         } catch (error) {
             const message = error.response && error.response.data.message ? error.response.data.message : error.message;
             handleAfterFetch.error(message);
