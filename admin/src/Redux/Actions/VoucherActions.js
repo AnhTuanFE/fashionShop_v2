@@ -109,10 +109,10 @@ export const getVoucher =
   async (dispatch) => {
     try {
       dispatch({ type: VOUCHER_DETAIL_REQUEST });
-      const res = await request.get(`/discount-codes/${id}`);
-      dispatch({ type: VOUCHER_DETAIL_SUCCESS, payload: res?.data?.data?.discountCode || [] });
+      const data = await request.get(`/discount-codes/${id}`);
+      dispatch({ type: VOUCHER_DETAIL_SUCCESS, payload: data || [] });
 
-      handleAfterFetch?.success(res?.data?.data?.discountCode);
+      handleAfterFetch?.success(data);
     } catch (error) {
       const message = error.response && error.response.data.message ? error.response.data.message : error.message;
       dispatch({
