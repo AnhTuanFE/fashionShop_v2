@@ -67,8 +67,8 @@ export const getVouchers =
   async (dispatch) => {
     try {
       dispatch({ type: VOUCHER_REQUEST });
-      const res = await request.get(`/discount-codes`, { params: { page, limit, keyword } });
-      dispatch({ type: VOUCHER_SUCCESS, payload: res?.data?.data?.discountCode || [] });
+      const { data } = await request.get(`/discount-codes`, { params: { page, limit, keyword } });
+      dispatch({ type: VOUCHER_SUCCESS, payload: data || [] });
 
       handleAfterFetch?.success();
     } catch (error) {
