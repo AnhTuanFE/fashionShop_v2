@@ -257,8 +257,8 @@ export const getShippingAddresses = (handleAfterFetchAddress) => async (dispatch
     try {
         dispatch({ type: SHIPPING_ADDRESS_REQUEST });
         const { data } = await request.get(`/users/address/get-user-address-list`);
-        handleAfterFetchAddress?.success(data?.data?.addressList.find((address) => address?.isDefault));
-        dispatch({ type: SHIPPING_ADDRESS_SUCCESS, payload: data?.data?.addressList || [] });
+        handleAfterFetchAddress?.success(data.find((address) => address?.isDefault));
+        dispatch({ type: SHIPPING_ADDRESS_SUCCESS, payload: data || [] });
     } catch (error) {
         const message = error.response && error.response.data.message ? error.response.data.message : error.message;
 
