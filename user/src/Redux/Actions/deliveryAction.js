@@ -89,7 +89,7 @@ export const getShippingFee =
 
             dispatch({
                 type: SHIPPING_FEE_SUCCESS,
-                payload: data?.data?.deliveryServices || [],
+                payload: data || [],
             });
         } catch (error) {
             const message = error.response && error.response.data.message ? error.response.data.message : error.message;
