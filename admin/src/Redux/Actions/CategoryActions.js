@@ -26,7 +26,7 @@ export const ListCategory =
       dispatch({ type: CATEGORY_CHILDREN_REQUEST });
 
       const { data } = await request.get(`/categories`, { params: { level: level } });
-      dispatch({ type: CATEGORY_CHILDREN_SUCCESS, payload: data.data?.categories || [] });
+      dispatch({ type: CATEGORY_CHILDREN_SUCCESS, payload: data || [] });
     } catch (error) {
       dispatch({
         type: CATEGORY_CHILDREN_FAIL,
