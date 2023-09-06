@@ -15,8 +15,8 @@ export const listCart = () => async (dispatch) => {
     try {
         dispatch({ type: CART_CONST?.CART_LIST_REQUEST });
         const { data } = await getListCart();
-        setLocalStorage('cartItems', data?.data?.cartItems);
-        dispatch({ type: CART_CONST?.CART_LIST_SUCCESS, payload: data?.data?.cartItems });
+        setLocalStorage('cartItems', data);
+        dispatch({ type: CART_CONST?.CART_LIST_SUCCESS, payload: data });
     } catch (error) {
         const message = error.response && error.response.data.message ? error.response.data.message : error.message;
         dispatch({
