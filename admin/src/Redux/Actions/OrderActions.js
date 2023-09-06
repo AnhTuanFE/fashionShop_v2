@@ -147,10 +147,14 @@ export const getBillOfLandingOrder =
     try {
       dispatch({ type: BILL_OF_LANDING_REQUEST });
 
-      const { data } = await request.get(`/deliveries/shipping-order/${orderId}/print/${pageSize}`);
-      window.open(data?.data?.url, '_blank');
+      const { data } = await request.get(`/deliveries/shipping-order/${orderId}/print`, {
+        params: {
+          pageSize,
+        },
+      });
+      window.open(data, '_blank');
       handleAfterFetch?.success();
-      dispatch({ type: BILL_OF_LANDING_SUCCESS, payload: data?.data?.deliveryInfo });
+      dispatch({ type: BILL_OF_LANDING_SUCCESS, payload: data?.deliveryInfo });
     } catch (error) {
       const message = error.response && error.response.data.message ? error.response.data.message : error.message;
       handleAfterFetch?.error(message);
