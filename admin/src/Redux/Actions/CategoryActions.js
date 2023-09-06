@@ -75,10 +75,9 @@ export const AddCategory =
   async (dispatch) => {
     try {
       dispatch({ type: CATEGORY_ADD_REQUEST });
-
       const { data } = await request.post(`/categories`, category);
       dispatch({ type: CATEGORY_ADD_SUCCESS, payload: data });
-      dispatch({ type: UPDATE_WHEN_ADD_CATEGORY_SUCCESS, payload: data?.data?.newCategory });
+      dispatch({ type: UPDATE_WHEN_ADD_CATEGORY_SUCCESS, payload: data });
 
       createCategoryStatus.success();
     } catch (error) {
