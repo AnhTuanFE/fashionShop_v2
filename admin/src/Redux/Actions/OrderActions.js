@@ -51,7 +51,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
   try {
     dispatch({ type: ORDER_DETAILS_REQUEST });
     const { data } = await request.get(`/orders/${id}`);
-    dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data?.data?.order });
+    dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     const message = error.response && error.response.data.message ? error.response.data.message : error.message;
 
