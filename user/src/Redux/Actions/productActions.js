@@ -89,8 +89,8 @@ export const listProductDetails = (id, handleAfterFetch) => async (dispatch) => 
     try {
         dispatch({ type: PRODUCT_DETAILS_REQUEST });
         const { data } = await request.get(`/products/${id}`);
-        dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data.data });
-        handleAfterFetch?.success(data.data?.product?.category?.slug);
+        dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
+        handleAfterFetch?.success(data?.category?.slug);
     } catch (error) {
         handleAfterFetch?.error();
         dispatch({
