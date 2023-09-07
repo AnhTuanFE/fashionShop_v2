@@ -170,7 +170,7 @@ export const getAllProducts =
       const { data } = await request.get(`/products/all-products`);
 
       dispatch({ type: PRODUCT_ALL_SUCCESS, payload: data.data.products || { products: [] } });
-      fetchAllProduct.success(data?.data.products || []);
+      fetchAllProduct.success(data || []);
     } catch (error) {
       const message = error.response && error.response.data.message ? error.response.data.message : error.message;
       dispatch({
