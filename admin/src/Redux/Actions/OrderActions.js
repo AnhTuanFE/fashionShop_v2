@@ -35,7 +35,7 @@ export const listOrders =
     try {
       dispatch({ type: ORDER_LIST_REQUEST });
       const { data } = await request.get(`/orders?limit=${15}&page=${page}&sortBy=${dateOrder}&status=${orderStatus}`);
-      dispatch({ type: ORDER_LIST_SUCCESS, payload: data?.data });
+      dispatch({ type: ORDER_LIST_SUCCESS, payload: data });
     } catch (error) {
       const message = error.response && error.response.data.message ? error.response.data.message : error.message;
 
