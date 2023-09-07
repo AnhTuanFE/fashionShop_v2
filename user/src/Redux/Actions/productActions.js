@@ -27,7 +27,7 @@ export const ListProductAll = () => async (dispatch) => {
         dispatch({ type: PRODUCT_LIST_ALL_REQUEST });
         const { data } = await request.get(`/products?sortBy=newest`);
 
-        dispatch({ type: PRODUCT_LIST_ALL_SUCCESS, payload: data.data });
+        dispatch({ type: PRODUCT_LIST_ALL_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
             type: PRODUCT_LIST_ALL_FAIL,
@@ -51,7 +51,7 @@ export const listProduct =
                 sortBy,
                 limit,
             });
-            dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data.data });
+            dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
         } catch (error) {
             dispatch({
                 type: PRODUCT_LIST_FAIL,

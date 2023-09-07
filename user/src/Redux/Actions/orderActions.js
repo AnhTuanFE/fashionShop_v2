@@ -130,7 +130,7 @@ export const getBestSellerProducts = () => async (dispatch) => {
     try {
         dispatch({ type: ORDER_LIST_ALL_REQUEST });
         const { data } = await request.get(`/products?&sortBy=total_sales&limit=16`);
-        dispatch({ type: ORDER_LIST_ALL_SUCCESS, payload: data?.data?.products || [] });
+        dispatch({ type: ORDER_LIST_ALL_SUCCESS, payload: data?.products || [] });
     } catch (error) {
         dispatch({
             type: ORDER_LIST_ALL_FAIL,
