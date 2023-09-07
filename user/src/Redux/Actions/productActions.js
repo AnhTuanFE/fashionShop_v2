@@ -72,8 +72,8 @@ export const getSimilarProduct =
             // });
             const { data } = await request.get('products/recommend', { params: { id, limit: 50, page: 0 } });
             const productsObject = {
-                ...data?.data,
-                products: data?.data?.products?.filter((product) => product?._id !== id),
+                ...data,
+                products: data?.products?.filter((product) => product?._id !== id),
             };
             dispatch({ type: PRODUCT_SIMILAR_SUCCESS, payload: productsObject });
         } catch (error) {
