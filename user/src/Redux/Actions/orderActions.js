@@ -97,7 +97,7 @@ export const getMyOrders =
             const { userLogin } = getState();
             dispatch({ type: ORDER_LIST_MY_REQUEST });
             const { data } = await getOrdersByUser({ userId: userLogin?.userInfo._id, page });
-            dispatch({ type: ORDER_LIST_MY_SUCCESS, payload: data?.data || { orders: [], page: 0, pages: 1 } });
+            dispatch({ type: ORDER_LIST_MY_SUCCESS, payload: data || { orders: [], page: 0, pages: 1 } });
         } catch (error) {
             const message = error.response && error.response.data.message ? error.response.data.message : error.message;
 
