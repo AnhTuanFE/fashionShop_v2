@@ -133,7 +133,7 @@ export const fetchProductToEdit = (id, fetchProduct) => async (dispatch) => {
     dispatch({ type: PRODUCT_EDIT_REQUEST });
     const { data } = await request.get(`/products/${id}`);
     dispatch({ type: PRODUCT_EDIT_SUCCESS, payload: data?.data?.product || {} });
-    fetchProduct?.success(data?.data?.product || {});
+    fetchProduct?.success(data || {});
   } catch (error) {
     const message = error.response && error.response.data.message ? error.response.data.message : error.message;
     dispatch({
