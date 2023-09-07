@@ -50,9 +50,9 @@ export const getPriceIsReducedAfterApplyVoucher =
 export const getPublicVouchers = () => async (dispatch) => {
     try {
         dispatch({ type: PUBLIC_VOUCHER_REQUEST });
-        const { data } = await request.get('/discount-codes/');
+        const { data } = await request.get('/discount-codes');
 
-        dispatch({ type: PUBLIC_VOUCHER_SUCCESS, payload: data?.data?.discountCode });
+        dispatch({ type: PUBLIC_VOUCHER_SUCCESS, payload: data });
     } catch (error) {
         const message = error.response && error.response.data.message ? error.response.data.message : error.message;
         dispatch({
