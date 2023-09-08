@@ -127,7 +127,7 @@ export const getPreviewOrder =
     try {
       dispatch({ type: ORDER_PREVIEW_REQUEST });
 
-      const { data } = await request.post(`/deliveries/shipping-order/${orderId}`);
+      const { data } = await request.post(`/deliveries/shipping-order/${orderId}/preview`);
       handleAfterFetch?.success();
       dispatch({ type: ORDER_PREVIEW_SUCCESS, payload: data });
     } catch (error) {
