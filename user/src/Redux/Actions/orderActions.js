@@ -37,11 +37,11 @@ export const createOrder = (order, handleAfterFetch) => async (dispatch, getStat
     try {
         dispatch({ type: ORDER_CREATE_REQUEST });
         const { data } = await addOrder(order);
-        handleAfterFetch?.success(data.data.newOrder);
+        handleAfterFetch?.success(data);
         dispatch({ type: ORDER_CREATE_SUCCESS, payload: data });
         dispatch({ type: CART_CONST?.CART_ORDER_RESET });
-        if (data.data.newOrder.paymentInformation?.payUrl?.length > 0) {
-            window.location.replace(data.data.newOrder.paymentInformation.payUrl);
+        if (data?.paymentInformation?.payUrl?.length > 0) {
+            window.location.replace(data?.paymentInformation?.payUrl);
         }
     } catch (error) {
         const message = error.response && error.response.data.message ? error.response.data.message : error.message;

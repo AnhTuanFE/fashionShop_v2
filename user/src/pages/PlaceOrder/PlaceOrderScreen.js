@@ -1,5 +1,6 @@
 import { LoadingButton } from '@mui/lab';
 import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import {
     Avatar,
     Backdrop,
@@ -142,41 +143,43 @@ const PlaceOrderScreen = ({ history }) => {
                 <Divider />
                 <div className={styles.productBody}>
                     <List className="row" sx={{ width: '100%', bgcolor: 'background.paper', pr: 0 }}>
-                        {cartOrder.cartOrderItems?.map((product) => (
-                            <ListItem key={product?._id} sx={{ width: '100%', pr: 0 }}>
-                                {product?.variant?.deleted || product?.variant?.disabled ? (
-                                    <ListItemText className="col-1">
-                                        <Typography color={'error'} variant="body1">
-                                            Sản phẩm tạm ngưng bán
+                        {cartOrder.cartOrderItems?.map((cartOrderItem) => (
+                            <Link key={cartOrderItem?._id} to={`/product/${cartOrderItem?.variant?.product?._id}`}>
+                                <ListItem key={cartOrderItem?._id} sx={{ width: '100%', pr: 0 }}>
+                                    {cartOrderItem?.variant?.deleted || cartOrderItem?.variant?.disabled ? (
+                                        <ListItemText className="col-1">
+                                            <Typography color={'error'} variant="body1">
+                                                Sản phẩm tạm ngưng bán
+                                            </Typography>
+                                        </ListItemText>
+                                    ) : null}
+                                    <ListItemAvatar>
+                                        <Avatar
+                                            src={cartOrderItem.variant.product.images?.[0]}
+                                            alt={cartOrderItem.variant.product.name}
+                                        />
+                                    </ListItemAvatar>
+                                    <ListItemText className="col-5">
+                                        <Typography variant="body1">{cartOrderItem.variant.product.name}</Typography>
+                                    </ListItemText>
+
+                                    <RenderAttributes attributes={cartOrderItem.variant.attributes} />
+
+                                    <ListItemText>
+                                        <Typography variant="body1">x{cartOrderItem.quantity}</Typography>
+                                    </ListItemText>
+                                    <ListItemText className="d-flex justify-content-end">
+                                        <Typography variant="body1" sx={{ textAlign: 'end' }}>
+                                            Tổng tiền:{' '}
+                                            {loadingGetList || loadingShippingFee ? (
+                                                <CircularProgress size={15} />
+                                            ) : (
+                                                formatMoney(cartOrder.priceOfProducts || 0)
+                                            )}
                                         </Typography>
                                     </ListItemText>
-                                ) : null}
-                                <ListItemAvatar>
-                                    <Avatar
-                                        src={product.variant.product.images?.[0]}
-                                        alt={product.variant.product.name}
-                                    />
-                                </ListItemAvatar>
-                                <ListItemText className="col-5">
-                                    <Typography variant="body1">{product.variant.product.name}</Typography>
-                                </ListItemText>
-
-                                <RenderAttributes attributes={product.variant.attributes} />
-
-                                <ListItemText>
-                                    <Typography variant="body1">x{product.quantity}</Typography>
-                                </ListItemText>
-                                <ListItemText className="d-flex justify-content-end">
-                                    <Typography variant="body1" sx={{ textAlign: 'end' }}>
-                                        Tổng tiền:{' '}
-                                        {loadingGetList || loadingShippingFee ? (
-                                            <CircularProgress size={15} />
-                                        ) : (
-                                            formatMoney(cartOrder.priceOfProducts || 0)
-                                        )}
-                                    </Typography>
-                                </ListItemText>
-                            </ListItem>
+                                </ListItem>
+                            </Link>
                         ))}
                     </List>
                 </div>
