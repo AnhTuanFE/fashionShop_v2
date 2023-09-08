@@ -24,7 +24,7 @@ export const login = (email, password, handleLogin) => async (dispatch) => {
   try {
     dispatch({ type: USER_LOGIN_REQUEST });
     const newPassword = await hashPassword(password);
-    const { data } = await axios.post(`${API_FASHIONSHOP}users/login`, { email, password: newPassword });
+    const { data } = await axios.post(`${API_FASHIONSHOP}/users/login`, { email, password: newPassword });
     if (data?.user?.role !== 'admin') {
       toast.error('Bạn không có quyền truy cập', ToastObjects);
       dispatch({
