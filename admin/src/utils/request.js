@@ -16,6 +16,7 @@ const getServerUrl = () => {
       serverUrl = String(process.env.REACT_APP_SERVER_API_DEVELOPMENT_URL);
     }
   }
+  console.log(serverUrl);
   return serverUrl;
 };
 
