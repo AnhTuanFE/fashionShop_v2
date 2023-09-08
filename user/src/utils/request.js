@@ -5,7 +5,10 @@ const getToken = () => {
     return `Bearer ${JSON.parse(localStorage.getItem('userInfo'))?.accessToken}`;
 };
 
-export const API_FASHIONSHOP = 'http://localhost:5000/api/v1/';
+export const API_FASHIONSHOP =
+    process.env.NODE_ENV == 'production'
+        ? process.env.REACT_APP_SERVER_API_PRODUCTION_URL
+        : process.env.REACT_APP_SERVER_API_DEVELOPMENT_URL;
 
 const request = axios.create({
     baseURL: API_FASHIONSHOP,
