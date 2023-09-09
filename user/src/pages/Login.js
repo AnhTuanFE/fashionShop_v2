@@ -130,7 +130,7 @@ const Login = () => {
                 </p>
                 <Divider sx={{ mt: 1, mb: 2 }}>
                     <Typography noWrap variant="body2" color="text.secondary">
-                        Bạn lần đầu tới Fashionshop?
+                        Bạn lần đầu tới Blueshop?
                     </Typography>
                 </Divider>
                 <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>

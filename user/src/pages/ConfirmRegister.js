@@ -23,7 +23,7 @@ export default function ConfirmRegister() {
             style={{ height: '80VH' }}
         >
             <form className="Login col-md-6 col-lg-4 col-10">
-                <h4 style={{ marginBottom: '15PX' }}>Bạn muốn đăng ký tài khoản tại Fashion shop?</h4>
+                <h4 style={{ marginBottom: '15PX' }}>Bạn muốn đăng ký tài khoản tại Blueshop?</h4>
                 <div className="d-flex justify-content-between">
                     <div className="btn btn-outline-danger btn__login" onClick={handleCancel}>
                         Hủy
