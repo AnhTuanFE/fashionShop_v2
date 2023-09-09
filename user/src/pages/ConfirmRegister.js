@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import Toast from '../components/LoadingError/Toast';
 import { cancelRegister, confirmRegister } from '../Redux/Actions/userActions';
 import useSearchParamsCustom from '~/hooks/useSearchParamCustom';
 import { useHistory } from 'react-router-dom';

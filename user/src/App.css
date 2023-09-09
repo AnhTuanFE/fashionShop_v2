@@ -4,7 +4,7 @@
 
 body {
     margin: 0;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     /* font-family: 'Open Sans', sans-serif; */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -165,6 +165,10 @@ textarea:focus {
 .mobile-header {
     display: none;
 }
+.header-text-register:hover ,
+.header-text-login:hover {
+    opacity: 0.5;
+}
 /* .mobile-header .container{
   display: flex;
 } */
@@ -284,15 +288,24 @@ textarea:focus {
     line-height: 30px;
     margin: 0 0 13px;
     text-transform: uppercase;
+    text-shadow: 2px 8px 4px rgba(0,0,0,0.3), 
+    0px -4px 10px rgba(255,255,255,0.3);
 }
 .subscribe-head p {
     color: #fff;
     font-size: 18px;
     line-height: 22px;
     margin: 0 0 39px;
+    text-shadow: 2px 8px 4px rgba(0,0,0,0.3), 
+    0px -4px 10px rgba(255,255,255,0.3);
 }
 .subscribe-head {
     text-align: center;
+}
+.form-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .form-section input[type='email'] {
     border: 0 none;

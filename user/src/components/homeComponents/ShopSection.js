@@ -93,7 +93,7 @@ const ShopSection = (props) => {
                                                     src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg//assets/a60759ad1dabe909c46a817ecbf71878.png"
                                                 />
                                                 <div className="" style={{ bottom: '15px', right: '50px' }}>
-                                                    Không tìm thấfdsfy sản phẩm
+                                                    Không tìm thấy sản phẩm
                                                 </div>
                                             </div>
                                         </div>
