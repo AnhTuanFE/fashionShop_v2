@@ -80,13 +80,18 @@ const OrderDetail = () => {
                   </RenderButtonUpdateStatus>
                 </div>
               </div>
-              <div className="d-flex align-items-center  mt-1">
+              <div className="d-flex align-items-center mt-3">
                 <Typography variant="body2" className="text-black mx-3">
-                  Order ID: {order?._id} |{' '}
+                  Order ID: {order?._id} |
                 </Typography>
                 <Typography variant="body2" color="primary">
-                  Nhận hàng dự kiến vào: {moment(order?.delivery?.leadTime).format('DD/MM/YYYY')}
+                  Nhận hàng dự kiến vào: {moment(order?.delivery?.leadTime).format('hh:mm DD/MM/YYYYY')} |{' '}
                 </Typography>
+                {order?.expiredAt ? (
+                  <Typography variant="body2" color="error">
+                    Hết hạn vào: {moment(order?.delivery?.leadTime).format('hh:mm DD/MM/YYYY')}
+                  </Typography>
+                ) : null}
               </div>
             </div>
             {
