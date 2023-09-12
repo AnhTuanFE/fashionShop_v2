@@ -25,14 +25,18 @@ const compareAddress = (address1, address2) => {
 export const PAY_WITH_MOMO = 2;
 export const PAY_WITH_CASH = 1;
 export const PAY_WITH_ATM = 3;
-export const PAY_WITH_CREDIT_CART = 4;
+export const PAY_WITH_CREDIT_CARD = 4;
+
+export const isMomoPaymentMethods = (paymentMethod) => {
+    return paymentMethod == PAY_WITH_MOMO || paymentMethod == PAY_WITH_ATM || paymentMethod == PAY_WITH_CREDIT_CARD;
+};
 
 export default function usePlaceOrder() {
     // window.scrollTo(0, 0);
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const [paymentMethod, setPaymentMethod] = useState(PAY_WITH_MOMO);
+    const [paymentMethod, setPaymentMethod] = useState(PAY_WITH_CASH);
     const [priceIsReduced, setPriceIsReduced] = useState({ totalDiscount: 0 });
     const [isOpenModalVoucher, setIsOpenModalVoucher] = useState(false);
     const [address, setAddress] = useState();

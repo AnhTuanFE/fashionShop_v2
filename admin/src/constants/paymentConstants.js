@@ -10,4 +10,11 @@ const paymentStatusConstants = {
   },
 };
 
-export { paymentStatusConstants };
+const PAYMENT_METHOD = {
+  PAY_WITH_MOMO: 2,
+  PAY_WITH_CASH: 1,
+  PAY_WITH_ATM: 3,
+  PAY_WITH_CREDIT_CARD: 4,
+};
+
+export { paymentStatusConstants, PAYMENT_METHOD };

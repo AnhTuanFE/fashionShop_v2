@@ -5,9 +5,23 @@ import { statusDescription, stepShipping } from '../../../../constants/ordersCon
 import { formatMoney } from '../../../../utils/formatMoney';
 import { Badge, Chip, Tooltip, Typography } from '@mui/material';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import { paymentStatusConstants } from '../../../../constants/paymentConstants';
+import { paymentStatusConstants, PAYMENT_METHOD } from '../../../../constants/paymentConstants';
 
 const ORDER_EXPIRY_LIMIT_TIME_IN_MILISECONDS = 1800000; //30 minutes
+
+const renderExpireBadge = (order) => {
+  if (
+    order?.status != 'placed' ||
+    Math.abs(new Date(order.expiredAt) - new Date()) > ORDER_EXPIRY_LIMIT_TIME_IN_MILISECONDS
+  ) {
+    return null;
+  }
+  if (order.paymentInformation.paymentMethod == PAYMENT_METHOD.PAY_WITH_CASH || order.paymentInformation.paid) {
+    return 'Sắp hết hạn';
+  } else {
+    return null;
+  }
+};
 
 const Orders = (props) => {
   const { orders } = props;
@@ -72,11 +86,12 @@ const Orders = (props) => {
                 <td style={{ position: 'relative' }}>
                   <Badge
                     badgeContent={
-                      order?.status === 'placed'
-                        ? Math.abs(new Date(order.expiredAt) - new Date()) <= ORDER_EXPIRY_LIMIT_TIME_IN_MILISECONDS
-                          ? 'Sắp hết hạn'
-                          : 'Mới'
-                        : null
+                      renderExpireBadge(order)
+                      // order?.status === 'placed'
+                      //   ? Math.abs(new Date(order.expiredAt) - new Date()) <= ORDER_EXPIRY_LIMIT_TIME_IN_MILISECONDS
+                      //     ? 'Sắp hết hạn'
+                      //     : 'Mới'
+                      //   : null
                     }
                     color="error"
                   >
