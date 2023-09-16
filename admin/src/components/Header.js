@@ -40,7 +40,7 @@ const Header = () => {
         <ul className="nav">
           <li className="dropdown nav-item">
             <Link className="dropdown-toggle" data-bs-toggle="dropdown" to="#">
-              <img className="img-xs rounded-circle" src="/images/favicon.png" alt="User" />
+              <img className="img-xs rounded-circle" src="/images/admin.jpg" alt="User" />
             </Link>
             <div className="dropdown-menu dropdown-menu-end">
               <Link onClick={logoutHandler} className="dropdown-item text-danger" to="#">

@@ -2,7 +2,7 @@ import ArrowUp from '../icon/ArrowUp';
 import { imageOrder } from './imageOrder';
 
 const image = {
-    logo: '/images/logo.png',
+    logo: '/images/logo2.png',
     email: 'https://cdn-icons-png.flaticon.com/512/3059/3059989.png',
     orderUser: 'https://icons.veryicon.com/png/o/miscellaneous/two-color-webpage-small-icon/user-244.png',
     imgInSigleProduct:

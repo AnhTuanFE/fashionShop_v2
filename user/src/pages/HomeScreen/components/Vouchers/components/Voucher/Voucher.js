@@ -47,8 +47,13 @@ export default function Voucher({ voucher, size = 'small', myVoucher = false }) 
     const renderCanAdd =
         !myVoucher && !voucher?.isAdd ? (
             <LoadingButton
+                // color="error"
                 sx={{
                     bgcolor: 'var(--primary-btn-color)',
+                    color: '#ffff',
+                    '&:hover': {
+                        color: 'blue',
+                    },
                 }}
                 loading={saveVoucher}
                 onClick={handleSaveVoucher}
@@ -64,7 +69,7 @@ export default function Voucher({ voucher, size = 'small', myVoucher = false }) 
                 <ListItem sx={{ pr: 0 }}>
                     <div className={styles.voucherTemplate}>
                         <div className={styles.voucherImageWrapper}>
-                            <img src="/images/logo.png" />
+                            <img src="/images/logo2.png" />
                         </div>
                         <div className={styles.cardLeft}>
                             <div className={styles.cardSawToot}></div>

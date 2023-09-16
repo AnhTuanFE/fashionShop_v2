@@ -48,7 +48,7 @@ const UserComponent = () => {
           <div className="col" key={user._id}>
             <div className="card card-user shadow-sm">
               <div className="card-header">
-                <img className="img-md img-avatar" src="images/favicon.png" alt="User pic" />
+                <img className="img-md img-avatar" src="images/logo2.png" alt="User pic" />
               </div>
               <div className="card-body">
                 <h5 className="card-title mt-5">{user.name}</h5>
