@@ -216,12 +216,12 @@ const Header = () => {
                                         </div>
                                     ) : (
                                         <>
-                                            <Link to="/register">
+                                            <Link to="/register" className="header-text-register">
                                                 <Typography noWrap variant="body2" color="InfoText">
                                                     Đăng ký
                                                 </Typography>
                                             </Link>
-                                            <Link to="/login">
+                                            <Link to="/login" className="header-text-login">
                                                 <Typography noWrap variant="body2" color="primary">
                                                     Đăng nhập
                                                 </Typography>

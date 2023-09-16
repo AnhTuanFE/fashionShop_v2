@@ -25,7 +25,7 @@ export const AddVoucher =
       dispatch({ type: VOUCHER_ADD_REQUEST });
       const { data } = await request.post(`/discount-codes`, voucher);
       dispatch({ type: VOUCHER_ADD_SUCCESS, payload: data });
-      dispatch({ type: UPDATE_WHEN_ADD_VOUCHER_SUCCESS, payload: data?.data?.newDiscountCode });
+      dispatch({ type: UPDATE_WHEN_ADD_VOUCHER_SUCCESS, payload: data });
 
       createVoucherStatus?.success();
     } catch (error) {
@@ -46,8 +46,8 @@ export const UpdateVoucher =
     try {
       dispatch({ type: VOUCHER_ADD_REQUEST });
       const response = await request.put(`/discount-codes/${voucher._id}`, voucher);
-      dispatch({ type: VOUCHER_ADD_SUCCESS, payload: response?.data });
-      dispatch({ type: UPDATE_WHEN_ADD_VOUCHER_SUCCESS, payload: response?.data?.data?.newDiscountCode });
+      dispatch({ type: VOUCHER_ADD_SUCCESS, payload: response });
+      dispatch({ type: UPDATE_WHEN_ADD_VOUCHER_SUCCESS, payload: response?.newDiscountCode });
 
       createVoucherStatus?.success();
     } catch (error) {
@@ -67,8 +67,8 @@ export const getVouchers =
   async (dispatch) => {
     try {
       dispatch({ type: VOUCHER_REQUEST });
-      const res = await request.get(`/discount-codes`, { params: { page, limit, keyword } });
-      dispatch({ type: VOUCHER_SUCCESS, payload: res?.data?.data?.discountCode || [] });
+      const { data } = await request.get(`/discount-codes`, { params: { page, limit, keyword } });
+      dispatch({ type: VOUCHER_SUCCESS, payload: data || [] });
 
       handleAfterFetch?.success();
     } catch (error) {
@@ -89,7 +89,7 @@ export const updateVoucher =
     try {
       dispatch({ type: VOUCHER_UPDATE_REQUEST });
       const { data } = await request.get(`/discount-codes/${id}`);
-      dispatch({ type: VOUCHER_UPDATE_SUCCESS, payload: data?.data?.discountCode || [] });
+      dispatch({ type: VOUCHER_UPDATE_SUCCESS, payload: data || [] });
 
       handleAfterFetch?.success();
     } catch (error) {
@@ -109,10 +109,10 @@ export const getVoucher =
   async (dispatch) => {
     try {
       dispatch({ type: VOUCHER_DETAIL_REQUEST });
-      const res = await request.get(`/discount-codes/${id}`);
-      dispatch({ type: VOUCHER_DETAIL_SUCCESS, payload: res?.data?.data?.discountCode || [] });
+      const { data } = await request.get(`/discount-codes/${id}`);
+      dispatch({ type: VOUCHER_DETAIL_SUCCESS, payload: data || [] });
 
-      handleAfterFetch?.success(res?.data?.data?.discountCode);
+      handleAfterFetch?.success(data);
     } catch (error) {
       const message = error.response && error.response.data.message ? error.response.data.message : error.message;
       dispatch({
@@ -131,7 +131,7 @@ export const deleteVoucher =
     try {
       dispatch({ type: VOUCHER_DELETE_REQUEST });
       const { data } = await request.delete(`/discount-codes/${id}`);
-      dispatch({ type: VOUCHER_DELETE_SUCCESS, payload: data?.data?.discountCode || [] });
+      dispatch({ type: VOUCHER_DELETE_SUCCESS, payload: data || [] });
 
       handleAfterFetch?.success();
     } catch (error) {

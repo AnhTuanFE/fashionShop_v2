@@ -78,7 +78,9 @@ export default function useSingleProduct() {
     };
     const AddToCartHandle = (e) => {
         e.preventDefault();
-        const variantId = product?.variants?.find((value) => value.attributes?.[0].value === value1)._id;
+        const variantId = product?.variants?.find(
+            (value) => value.attributes?.[0].value === value1 && value.attributes?.[1].value === value2,
+        )._id;
         if (userInfo && variantId) {
             setLoadingAddtoCart(true);
             dispatch(

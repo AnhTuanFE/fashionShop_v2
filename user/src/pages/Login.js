@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import isEmpty from 'validator/lib/isEmpty';
-import Toast from '../components/LoadingError/Toast';
 
 import { login } from '../Redux/Actions/userActions';
 import { FormLoading } from '~/components/LoadingError/Loading';
@@ -141,7 +140,7 @@ const Login = () => {
                 </p>
                 <Divider sx={{ mt: 1, mb: 2 }}>
                     <Typography noWrap variant="body2" color="text.secondary">
-                        Bạn lần đầu tới Fashionshop?
+                        Bạn lần đầu tới Blueshop?
                     </Typography>
                 </Divider>
                 <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>

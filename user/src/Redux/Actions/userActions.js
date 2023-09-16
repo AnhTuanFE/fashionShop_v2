@@ -49,12 +49,12 @@ export const login = (email, password) => async (dispatch) => {
         localStorage.setItem(
             'userInfo',
             JSON.stringify({
-                refreshToken: data?.data.refreshToken,
-                accessToken: data?.data.accessToken,
+                refreshToken: data?.refreshToken,
+                accessToken: data?.accessToken,
             }),
         );
         window.location.href = '/';
-        await dispatch({ type: USER_LOGIN_SUCCESS, payload: data?.data.user });
+        await dispatch({ type: USER_LOGIN_SUCCESS, payload: data?.user });
     } catch (error) {
         const message = error.response && error.response.data.message ? error.response.data.message : error.message;
         dispatch({
@@ -187,9 +187,9 @@ export const resetPassWord = (resetPasswordToken, data, history) => async (dispa
 export const getUserDetails = (id, setLoadingFetchUserShipping) => async (dispatch, getState) => {
     try {
         dispatch({ type: USER_DETAILS_REQUEST });
-        const { data } = await request.get(`/users/${id}`);
+        const { data } = await request.get(`/users/profile`);
         setLoadingFetchUserShipping && setLoadingFetchUserShipping(false);
-        dispatch({ type: USER_DETAILS_SUCCESS, payload: data?.data?.user });
+        dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
     } catch (error) {
         const message = error.response && error.response.data.message ? error.response.data.message : error.message;
         setLoadingFetchUserShipping && setLoadingFetchUserShipping(false);
@@ -207,11 +207,10 @@ export const updateUserProfile = (user, handleAfterFetch) => async (dispatch, ge
         dispatch({ type: USER_UPDATE_PROFILE_REQUEST });
 
         const { data } = await request.put(`/users/profile`, user);
-
         toast.success('Cập nhật thông tin thành công', Toastobjects);
         dispatch({
             type: USER_UPDATE_PROFILE_SUCCESS,
-            payload: { ...data?.data.user, accessToken: data?.data.accessToken },
+            payload: { ...data, accessToken: data?.accessToken },
         });
 
         handleAfterFetch.success();
@@ -258,8 +257,8 @@ export const getShippingAddresses = (handleAfterFetchAddress) => async (dispatch
     try {
         dispatch({ type: SHIPPING_ADDRESS_REQUEST });
         const { data } = await request.get(`/users/address/get-user-address-list`);
-        handleAfterFetchAddress?.success(data?.data?.addressList.find((address) => address?.isDefault));
-        dispatch({ type: SHIPPING_ADDRESS_SUCCESS, payload: data?.data?.addressList || [] });
+        handleAfterFetchAddress?.success(data.find((address) => address?.isDefault));
+        dispatch({ type: SHIPPING_ADDRESS_SUCCESS, payload: data || [] });
     } catch (error) {
         const message = error.response && error.response.data.message ? error.response.data.message : error.message;
 
@@ -297,10 +296,10 @@ export const AddShippingAddress =
         try {
             dispatch({ type: SHIPPING_ADDRESS_REQUEST });
             const { data } = await request.post(`/users/address/add-user-address`, address);
-            const newAddress = data?.data?.addressList?.at(-1);
+            const newAddress = data.at(-1);
 
             handleAfterFetch.success('Thêm địa chỉ giao hàng thành công', newAddress);
-            dispatch({ type: SHIPPING_ADDRESS_SUCCESS, payload: data?.data?.addressList || [] });
+            dispatch({ type: SHIPPING_ADDRESS_SUCCESS, payload: data || [] });
         } catch (error) {
             const message = error.response && error.response.data.message ? error.response.data.message : error.message;
             handleAfterFetch.error(message);
@@ -340,7 +339,7 @@ export const UpdateShippingAddress =
             dispatch({ type: SHIPPING_ADDRESS_REQUEST });
             const { data } = await request.put(`/users/address/${id}/update-user-address`, address);
             handleAfterFetch.success('Cập nhật địa chỉ giao hàng thành công', address);
-            dispatch({ type: SHIPPING_ADDRESS_SUCCESS, payload: data?.data?.addressList || [] });
+            dispatch({ type: SHIPPING_ADDRESS_SUCCESS, payload: data || [] });
         } catch (error) {
             const message = error.response && error.response.data.message ? error.response.data.message : error.message;
             handleAfterFetch.error(message);
@@ -358,7 +357,7 @@ export const RemoveShippingAddress =
             dispatch({ type: SHIPPING_ADDRESS_REQUEST });
             const { data } = await request.delete(`/users/address/${id}/remove-user-address`);
             handleAfterFetch.success('Xóa địa chỉ giao hàng thành công');
-            dispatch({ type: SHIPPING_ADDRESS_SUCCESS, payload: data?.data?.addressList || [] });
+            dispatch({ type: SHIPPING_ADDRESS_SUCCESS, payload: data || [] });
         } catch (error) {
             const message = error.response && error.response.data.message ? error.response.data.message : error.message;
             handleAfterFetch.error(message);

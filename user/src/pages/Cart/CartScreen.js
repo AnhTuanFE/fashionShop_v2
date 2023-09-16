@@ -55,7 +55,7 @@ const CartScreen = () => {
     };
     const handleDeleteAll = useCallback(() => {
         dispatch(removefromcart({ id: Object.keys(cartChoise), setCartChoise, deleteCartAll: true }));
-    }, [cartChoise]);
+    }, [cartChoise, dispatch]);
 
     const createContent = useCallback(() => {
         return { title: 'Xóa sản phẩm khỏi giỏ hàng', body: 'Bạn có chắc?' };
@@ -68,7 +68,7 @@ const CartScreen = () => {
                     setLoadingIndices(null);
                 }
             }, 320);
-    }, [suc, successCreate, successUpdate]);
+    }, [suc, successCreate, successUpdate, loadingIndices, dispatch]);
 
     const [isMobile] = useState(window.innerWidth < 540);
     return (
@@ -120,7 +120,7 @@ const CartScreen = () => {
                                             id={item?.id}
                                             style={{ height: '100%' }}
                                             type="checkbox"
-                                            checked={cartChoise[item?.variant?._id] != undefined}
+                                            checked={cartChoise[item?.variant?._id] !== undefined}
                                             onChange={(e) => {
                                                 setCartChoise((pre) => {
                                                     if (pre[item?.variant?._id] === undefined)
@@ -308,7 +308,15 @@ const CartScreen = () => {
                             <div className="total col-md-3">
                                 {Object.keys(cartChoise).length > 0 && (
                                     <WrapConfirmModal content={createContent()} handleSubmit={handleDeleteAll}>
-                                        <span>Xóa</span>
+                                        
+                                        <span
+                                            className="delete-cart"
+                                            data-toggle="modal"
+                                            data-target="#staticBackdrop"
+                                            style={{ cursor: 'pointer' }}
+                                        >
+                                            Xóa
+                                        </span>
                                     </WrapConfirmModal>
                                 )}
                             </div>

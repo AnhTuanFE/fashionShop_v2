@@ -26,7 +26,7 @@ export const ListCategory =
       dispatch({ type: CATEGORY_CHILDREN_REQUEST });
 
       const { data } = await request.get(`/categories`, { params: { level: level } });
-      dispatch({ type: CATEGORY_CHILDREN_SUCCESS, payload: data.data?.categories || [] });
+      dispatch({ type: CATEGORY_CHILDREN_SUCCESS, payload: data || [] });
     } catch (error) {
       dispatch({
         type: CATEGORY_CHILDREN_FAIL,
@@ -39,7 +39,7 @@ export const FetchCategoriesTree = () => async (dispatch) => {
   try {
     dispatch({ type: CATEGORY_REQUEST });
     const { data } = await request.get('/categories/get-category-tree');
-    dispatch({ type: CATEGORY_SUCCESS, payload: data?.data?.categories || [] });
+    dispatch({ type: CATEGORY_SUCCESS, payload: data || [] });
   } catch (error) {
     dispatch({
       type: CATEGORY_FAIL,
@@ -75,10 +75,9 @@ export const AddCategory =
   async (dispatch) => {
     try {
       dispatch({ type: CATEGORY_ADD_REQUEST });
-
       const { data } = await request.post(`/categories`, category);
       dispatch({ type: CATEGORY_ADD_SUCCESS, payload: data });
-      dispatch({ type: UPDATE_WHEN_ADD_CATEGORY_SUCCESS, payload: data?.data?.newCategory });
+      dispatch({ type: UPDATE_WHEN_ADD_CATEGORY_SUCCESS, payload: data });
 
       createCategoryStatus.success();
     } catch (error) {

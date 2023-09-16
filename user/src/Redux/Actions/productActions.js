@@ -27,7 +27,7 @@ export const ListProductAll = () => async (dispatch) => {
         dispatch({ type: PRODUCT_LIST_ALL_REQUEST });
         const { data } = await request.get(`/products?sortBy=newest`);
 
-        dispatch({ type: PRODUCT_LIST_ALL_SUCCESS, payload: data.data });
+        dispatch({ type: PRODUCT_LIST_ALL_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
             type: PRODUCT_LIST_ALL_FAIL,
@@ -51,7 +51,7 @@ export const listProduct =
                 sortBy,
                 limit,
             });
-            dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data.data });
+            dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
         } catch (error) {
             dispatch({
                 type: PRODUCT_LIST_FAIL,
@@ -72,8 +72,8 @@ export const getSimilarProduct =
             // });
             const { data } = await request.get('products/recommend', { params: { id, limit: 50, page: 0 } });
             const productsObject = {
-                ...data?.data,
-                products: data?.data?.products?.filter((product) => product?._id !== id),
+                ...data,
+                products: data?.products?.filter((product) => product?._id !== id),
             };
             dispatch({ type: PRODUCT_SIMILAR_SUCCESS, payload: productsObject });
         } catch (error) {
@@ -89,8 +89,8 @@ export const listProductDetails = (id, handleAfterFetch) => async (dispatch) => 
     try {
         dispatch({ type: PRODUCT_DETAILS_REQUEST });
         const { data } = await request.get(`/products/${id}`);
-        dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data.data });
-        handleAfterFetch?.success(data.data?.product?.category?.slug);
+        dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
+        handleAfterFetch?.success(data?.category?.slug);
     } catch (error) {
         handleAfterFetch?.error();
         dispatch({

@@ -21,7 +21,7 @@ export const getProvinces = (handleSuccessGetAddress) => async (dispatch) => {
         if (handleSuccessGetAddress) {
             handleSuccessGetAddress(data);
         }
-        dispatch({ type: ADDRESS_PROVINCE_LIST_SUCCESS, payload: data?.data?.provinces });
+        dispatch({ type: ADDRESS_PROVINCE_LIST_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
             type: ADDRESS_PROVINCE_LIST_FAIL.ADDRESS_FAIL,
@@ -37,7 +37,7 @@ export const getDistricts = (province, handleSuccessGetAddress) => async (dispat
         if (handleSuccessGetAddress) {
             handleSuccessGetAddress(data);
         }
-        dispatch({ type: ADDRESS_DISTRICT_LIST_SUCCESS, payload: data?.data?.districts });
+        dispatch({ type: ADDRESS_DISTRICT_LIST_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
             type: ADDRESS_DISTRICT_LIST_FAIL,
@@ -53,7 +53,7 @@ export const getWards = (district, handleSuccessGetAddress) => async (dispatch) 
         if (handleSuccessGetAddress) {
             handleSuccessGetAddress(data);
         }
-        dispatch({ type: ADDRESS_WARD_LIST_SUCCESS, payload: data?.data?.wards });
+        dispatch({ type: ADDRESS_WARD_LIST_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
             type: ADDRESS_WARD_LIST_FAIL,
@@ -89,7 +89,7 @@ export const getShippingFee =
 
             dispatch({
                 type: SHIPPING_FEE_SUCCESS,
-                payload: data?.data?.deliveryServices || [],
+                payload: data || [],
             });
         } catch (error) {
             const message = error.response && error.response.data.message ? error.response.data.message : error.message;

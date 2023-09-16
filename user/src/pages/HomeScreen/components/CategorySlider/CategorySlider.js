@@ -11,7 +11,6 @@ import {
     Divider,
     Tooltip,
     Typography,
-    cardContentClasses,
 } from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -59,16 +58,15 @@ export default function CategorySlider() {
         );
     return (
         <MainSection>
-            {categories?.map((category, index) => {
+            {categories?.map((category) => {
                 return (
                     <Link key={category._id} to={`search?category=${category?.slug}`} className={styles.categoryLink}>
                         <Tooltip title={category?.name}>
                             <Card
                                 sx={{
                                     borderRadius: '0',
-                                    boxShadow: 'none',
-
                                     border: '1px solid var(--border-color)',
+                                    boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px',
                                 }}
                                 className={styles.categoryCard}
                             >

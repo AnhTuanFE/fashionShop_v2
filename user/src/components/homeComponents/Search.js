@@ -80,12 +80,12 @@ const Search = ({ value, keyword, width }) => {
         const fetchApi = async () => {
             try {
                 setLoading(true);
-                const res = await request.get('/products/search', {
+                const { data } = await request.get('/products/search', {
                     params: {
                         keyword: debounce,
                     },
                 });
-                setSearchResult(res.data?.data?.keywords);
+                setSearchResult(data);
             } catch (error) {
             } finally {
                 setLoading(false);

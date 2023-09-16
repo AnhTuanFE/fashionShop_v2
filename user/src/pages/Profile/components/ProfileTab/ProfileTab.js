@@ -122,7 +122,7 @@ const ProfileTab = () => {
                         <Controller
                             name="email"
                             control={control}
-                            rules={{ required: true }}
+                            // rules={{ required: true }}
                             render={({ field, fieldState }) => (
                                 <Fragment>
                                     <TextField
@@ -134,15 +134,16 @@ const ProfileTab = () => {
                                         {...field}
                                         variant={inputPropsConstants.variantOutLine}
                                         size={inputPropsConstants.smallSize}
+                                        disabled={true}
                                     />
-                                    <p className="noti-validate">
+                                    {/* <p className="noti-validate">
                                         {renderError([
                                             {
                                                 error: fieldState?.error?.type === 'required',
                                                 message: 'Bạn chưa nhập trường này',
                                             },
                                         ])}
-                                    </p>
+                                    </p> */}
                                 </Fragment>
                             )}
                         />

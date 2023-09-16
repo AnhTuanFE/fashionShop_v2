@@ -37,10 +37,12 @@ export const createOrder = (order, handleAfterFetch) => async (dispatch, getStat
     try {
         dispatch({ type: ORDER_CREATE_REQUEST });
         const { data } = await addOrder(order);
-        handleAfterFetch?.success(data.data.newOrder);
-
+        handleAfterFetch?.success(data);
         dispatch({ type: ORDER_CREATE_SUCCESS, payload: data });
         dispatch({ type: CART_CONST?.CART_ORDER_RESET });
+        if (data?.paymentInformation?.payUrl?.length > 0) {
+            window.location.replace(data?.paymentInformation?.payUrl);
+        }
     } catch (error) {
         const message = error.response && error.response.data.message ? error.response.data.message : error.message;
 
@@ -60,7 +62,7 @@ export const getOrderDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: ORDER_DETAILS_REQUEST });
         const { data } = await getOrder(id);
-        dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data?.data?.order || {} });
+        dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data || {} });
     } catch (error) {
         const message = error.response && error.response.data.message ? error.response.data.message : error.message;
 
@@ -95,7 +97,7 @@ export const getMyOrders =
             const { userLogin } = getState();
             dispatch({ type: ORDER_LIST_MY_REQUEST });
             const { data } = await getOrdersByUser({ userId: userLogin?.userInfo._id, page });
-            dispatch({ type: ORDER_LIST_MY_SUCCESS, payload: data?.data || { orders: [], page: 0, pages: 1 } });
+            dispatch({ type: ORDER_LIST_MY_SUCCESS, payload: data || { orders: [], page: 0, pages: 1 } });
         } catch (error) {
             const message = error.response && error.response.data.message ? error.response.data.message : error.message;
 
@@ -128,7 +130,7 @@ export const getBestSellerProducts = () => async (dispatch) => {
     try {
         dispatch({ type: ORDER_LIST_ALL_REQUEST });
         const { data } = await request.get(`/products?&sortBy=total_sales&limit=16`);
-        dispatch({ type: ORDER_LIST_ALL_SUCCESS, payload: data?.data?.products || [] });
+        dispatch({ type: ORDER_LIST_ALL_SUCCESS, payload: data?.products || [] });
     } catch (error) {
         dispatch({
             type: ORDER_LIST_ALL_FAIL,

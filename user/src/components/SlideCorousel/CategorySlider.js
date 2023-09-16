@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import Slider from 'react-slick';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -20,7 +19,7 @@ export default function CategorySlider() {
 
     return (
         <div>
-            {categories?.map((category, index) => {
+            {categories?.map((category) => {
                 return (
                     <Card key={category._id}>
                         <Link to={`search?category=${category._id}`} className="corousel-link">

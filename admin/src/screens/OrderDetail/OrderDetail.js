@@ -63,7 +63,7 @@ const OrderDetail = () => {
       <div className="card">
         <header className="card-header p-3 Header-white">
           <div className="row align-items-center ">
-            <div className="col-lg-6 col-md-6">
+            <div className="col-lg-10 col-md-6">
               <div className="d-flex align-items-center">
                 <i className="far fa-calendar-alt mx-2"></i>
                 <b className="text-black">Đặt hàng lúc {moment(order?.createdAt).format('hh:mm DD/MM/YYYY')} </b>
@@ -80,13 +80,20 @@ const OrderDetail = () => {
                   </RenderButtonUpdateStatus>
                 </div>
               </div>
-              <div className="d-flex align-items-center  mt-1">
-                <Typography variant="body2" className="text-black mx-3">
-                  Order ID: {order?._id} |{' '}
+              <div className="d-flex align-items-center mt-3">
+                <Typography variant="body2" className="text-black mx-3 mx-4">
+                  Order ID:
+                  <p>{order?._id}</p>
                 </Typography>
-                <Typography variant="body2" color="primary">
-                  Nhận hàng dự kiến vào: {moment(order?.delivery?.leadTime).format('DD/MM/YYYY')}
+                <Typography variant="body2" color="primary" className="mx-4">
+                  Nhận hàng dự kiến vào: <p>{moment(order?.delivery?.leadTime).format('hh:mm DD/MM/YYYYY')} </p>
                 </Typography>
+                {order?.expiredAt ? (
+                  <Typography variant="body2" color="error" className='mx-4'>
+                    Hết hạn vào:
+                    <p>{moment(order?.delivery?.leadTime).format('hh:mm DD/MM/YYYY')}</p>
+                  </Typography>
+                ) : null}
               </div>
             </div>
             {

@@ -5,6 +5,24 @@ import { statusDescription, stepShipping } from '../../../../constants/ordersCon
 import { formatMoney } from '../../../../utils/formatMoney';
 import { Badge, Chip, Tooltip, Typography } from '@mui/material';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import { paymentStatusConstants, PAYMENT_METHOD } from '../../../../constants/paymentConstants';
+
+const ORDER_EXPIRY_LIMIT_TIME_IN_MILISECONDS = 1800000; //30 minutes
+
+const renderExpireBadge = (order) => {
+  if (
+    order?.status != 'placed' ||
+    Math.abs(new Date(order.expiredAt) - new Date()) > ORDER_EXPIRY_LIMIT_TIME_IN_MILISECONDS
+  ) {
+    return null;
+  }
+  if (order.paymentInformation.paymentMethod == PAYMENT_METHOD.PAY_WITH_CASH || order.paymentInformation.paid) {
+    return 'Sắp hết hạn';
+  } else {
+    return null;
+  }
+};
+
 const Orders = (props) => {
   const { orders } = props;
 
@@ -48,7 +66,7 @@ const Orders = (props) => {
                     {moment(order.createdAt).format('hh:mm MM/DD/YYYY')}
                   </Typography>
                 </td>
-                <td style={{ position: 'relative' }}>
+                {/* <td style={{ position: 'relative' }}>
                   {order?.paymentInformation?.paid ||
                   (order?.statusHistory?.find((step) => step?.status === 'delivered') &&
                     order?.statusHistory?.length > 2) ? (
@@ -56,10 +74,27 @@ const Orders = (props) => {
                   ) : (
                     <Chip size="small" color={'primary'} variant="outlined" label="Chưa thanh toán" />
                   )}
-                </td>
-
+                </td> */}
                 <td style={{ position: 'relative' }}>
-                  <Badge badgeContent={order?.status === 'placed' ? 'Mới' : null} color="error">
+                  <Chip
+                    size="small"
+                    color={paymentStatusConstants[order.paymentInformation.status.state].chipColor}
+                    variant="outlined"
+                    label={order.paymentInformation.status.description}
+                  />
+                </td>
+                <td style={{ position: 'relative' }}>
+                  <Badge
+                    badgeContent={
+                      renderExpireBadge(order)
+                      // order?.status === 'placed'
+                      //   ? Math.abs(new Date(order.expiredAt) - new Date()) <= ORDER_EXPIRY_LIMIT_TIME_IN_MILISECONDS
+                      //     ? 'Sắp hết hạn'
+                      //     : 'Mới'
+                      //   : null
+                    }
+                    color="error"
+                  >
                     <Chip
                       size="small"
                       color={stepShipping[status]?.color || 'default'}

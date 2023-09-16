@@ -35,7 +35,7 @@ export const listOrders =
     try {
       dispatch({ type: ORDER_LIST_REQUEST });
       const { data } = await request.get(`/orders?limit=${15}&page=${page}&sortBy=${dateOrder}&status=${orderStatus}`);
-      dispatch({ type: ORDER_LIST_SUCCESS, payload: data?.data });
+      dispatch({ type: ORDER_LIST_SUCCESS, payload: data });
     } catch (error) {
       const message = error.response && error.response.data.message ? error.response.data.message : error.message;
 
@@ -51,7 +51,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
   try {
     dispatch({ type: ORDER_DETAILS_REQUEST });
     const { data } = await request.get(`/orders/${id}`);
-    dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data?.data?.order });
+    dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     const message = error.response && error.response.data.message ? error.response.data.message : error.message;
 
@@ -129,7 +129,7 @@ export const getPreviewOrder =
 
       const { data } = await request.post(`/deliveries/shipping-order/${orderId}/preview`);
       handleAfterFetch?.success();
-      dispatch({ type: ORDER_PREVIEW_SUCCESS, payload: data?.data?.deliveryInfo });
+      dispatch({ type: ORDER_PREVIEW_SUCCESS, payload: data });
     } catch (error) {
       const message = error.response && error.response.data.message ? error.response.data.message : error.message;
       handleAfterFetch?.error(message);
@@ -147,10 +147,14 @@ export const getBillOfLandingOrder =
     try {
       dispatch({ type: BILL_OF_LANDING_REQUEST });
 
-      const { data } = await request.get(`/deliveries/shipping-order/${orderId}/print/${pageSize}`);
-      window.open(data?.data?.url, '_blank');
+      const { data } = await request.get(`/deliveries/shipping-order/${orderId}/print`, {
+        params: {
+          pageSize,
+        },
+      });
+      window.open(data, '_blank');
       handleAfterFetch?.success();
-      dispatch({ type: BILL_OF_LANDING_SUCCESS, payload: data?.data?.deliveryInfo });
+      dispatch({ type: BILL_OF_LANDING_SUCCESS, payload: data?.deliveryInfo });
     } catch (error) {
       const message = error.response && error.response.data.message ? error.response.data.message : error.message;
       handleAfterFetch?.error(message);
@@ -170,7 +174,7 @@ export const updateCODAmount =
 
       const { data } = await request.post(`deliveries/shipping-order/${orderId}/update-cod`, { cod_amount });
       handleAfterFetch?.success();
-      dispatch({ type: UPDATE_COD_SUCCESS, payload: data?.data });
+      dispatch({ type: UPDATE_COD_SUCCESS, payload: data });
     } catch (error) {
       const message = error.response && error.response.data.message ? error.response.data.message : error.message;
       handleAfterFetch?.error(message);

@@ -1,5 +1,6 @@
 import { LoadingButton } from '@mui/lab';
 import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import {
     Avatar,
     Backdrop,
@@ -25,7 +26,7 @@ import DiscountIcon from '@mui/icons-material/Discount';
 import moment from 'moment';
 
 import WrapConfirmModal from '~/components/Modal/WrapConfirmModal';
-import usePlaceOrder, { PAY_WITH_CASH, PAY_WITH_MOMO } from './hook/usePlaceOrder';
+import usePlaceOrder, { PAY_WITH_CASH, PAY_WITH_MOMO, PAY_WITH_ATM, PAY_WITH_CREDIT_CARD } from './hook/usePlaceOrder';
 import styles from './PlaceOrder.module.scss';
 import ModalAddress from './components/ModalAddress/ModalAddress';
 import { formatMoney } from '~/utils/formatMoney';
@@ -149,41 +150,43 @@ const PlaceOrderScreen = ({ history }) => {
                 <Divider />
                 <div className={styles.productBody}>
                     <List className="row" sx={{ width: '100%', bgcolor: 'background.paper', pr: 0 }}>
-                        {cartOrder.cartOrderItems?.map((product) => (
-                            <ListItem key={product?._id} sx={{ width: '100%', pr: 0 }}>
-                                {product?.variant?.deleted || product?.variant?.disabled ? (
-                                    <ListItemText className="col-1">
-                                        <Typography color={'error'} variant="body1">
-                                            Sản phẩm tạm ngưng bán
+                        {cartOrder.cartOrderItems?.map((cartOrderItem) => (
+                            <Link key={cartOrderItem?._id} to={`/product/${cartOrderItem?.variant?.product?._id}`}>
+                                <ListItem key={cartOrderItem?._id} sx={{ width: '100%', pr: 0 }}>
+                                    {cartOrderItem?.variant?.deleted || cartOrderItem?.variant?.disabled ? (
+                                        <ListItemText className="col-1">
+                                            <Typography color={'error'} variant="body1">
+                                                Sản phẩm tạm ngưng bán
+                                            </Typography>
+                                        </ListItemText>
+                                    ) : null}
+                                    <ListItemAvatar>
+                                        <Avatar
+                                            src={cartOrderItem.variant.product.images?.[0]}
+                                            alt={cartOrderItem.variant.product.name}
+                                        />
+                                    </ListItemAvatar>
+                                    <ListItemText className="col-5">
+                                        <Typography variant="body1">{cartOrderItem.variant.product.name}</Typography>
+                                    </ListItemText>
+
+                                    <RenderAttributes attributes={cartOrderItem.variant.attributes} />
+
+                                    <ListItemText>
+                                        <Typography variant="body1">x{cartOrderItem.quantity}</Typography>
+                                    </ListItemText>
+                                    <ListItemText className="d-flex justify-content-end">
+                                        <Typography variant="body1" sx={{ textAlign: 'end' }}>
+                                            Tổng tiền:{' '}
+                                            {loadingGetList || loadingShippingFee ? (
+                                                <CircularProgress size={15} />
+                                            ) : (
+                                                formatMoney(cartOrder.priceOfProducts || 0)
+                                            )}
                                         </Typography>
                                     </ListItemText>
-                                ) : null}
-                                <ListItemAvatar>
-                                    <Avatar
-                                        src={product.variant.product.images?.[0]}
-                                        alt={product.variant.product.name}
-                                    />
-                                </ListItemAvatar>
-                                <ListItemText className="col-5">
-                                    <Typography variant="body1">{product.variant.product.name}</Typography>
-                                </ListItemText>
-
-                                <RenderAttributes attributes={product.variant.attributes} />
-
-                                <ListItemText>
-                                    <Typography variant="body1">x{product.quantity}</Typography>
-                                </ListItemText>
-                                <ListItemText className="d-flex justify-content-end">
-                                    <Typography variant="body1" sx={{ textAlign: 'end' }}>
-                                        Tổng tiền:{' '}
-                                        {loadingGetList || loadingShippingFee ? (
-                                            <CircularProgress size={15} />
-                                        ) : (
-                                            formatMoney(cartOrder.priceOfProducts || 0)
-                                        )}
-                                    </Typography>
-                                </ListItemText>
-                            </ListItem>
+                                </ListItem>
+                            </Link>
                         ))}
                     </List>
                 </div>
@@ -331,6 +334,16 @@ const PlaceOrderScreen = ({ history }) => {
                                 control={<Radio size="small" />}
                                 label="Thanh toán qua momo"
                             />
+                            <FormControlLabel
+                                value={PAY_WITH_ATM}
+                                control={<Radio size="small" />}
+                                label="Thanh toán thẻ ATM nội địa"
+                            />
+                            <FormControlLabel
+                                value={PAY_WITH_CREDIT_CARD}
+                                control={<Radio size="small" />}
+                                label="Thanh toán thẻ quốc tế"
+                            />
                         </RadioGroup>
                     </FormControl>
                     <Divider />
@@ -361,7 +374,6 @@ const PlaceOrderScreen = ({ history }) => {
                                 Khuyến mãi:
                             </Typography>
                             <Typography sx={{ textAlign: 'end' }} variant="body1">
-                                -{' '}
                                 {loadingApplyVoucher ? (
                                     <CircularProgress size={15} />
                                 ) : (
