@@ -435,7 +435,7 @@ export default function ModalUpdateAddress({
                                 Hủy
                             </Button>
                             <LoadingButton
-                                sx={{ width: '30%', ml: 1 }}
+                                sx={{ width: '30%', ml: 1, bgcolor: 'var(--primary-btn-color)' }}
                                 loading={loading}
                                 type="submit"
                                 variant={inputPropsConstants.variantContained}

@@ -46,7 +46,13 @@ export default function Voucher({ voucher, size = 'small', myVoucher = false }) 
         voucher?.usedBy?.filter((userId) => userId === userInfo?._id)?.length >= voucher?.userUseMaximum || endOfUse;
     const renderCanAdd =
         !myVoucher && !voucher?.isAdd ? (
-            <LoadingButton loading={saveVoucher} onClick={handleSaveVoucher}>
+            <LoadingButton
+                sx={{
+                    bgcolor: 'var(--primary-btn-color)',
+                }}
+                loading={saveVoucher}
+                onClick={handleSaveVoucher}
+            >
                 Lưu
             </LoadingButton>
         ) : (
@@ -101,7 +107,7 @@ export default function Voucher({ voucher, size = 'small', myVoucher = false }) 
                         secondary={
                             <Box sx={{ maxWidth: '85%' }}>
                                 <Chip
-                                    sx={{ mr: 1 }}
+                                    sx={{ mr: 1, bgcolor: 'var(--primary-btn-color)' }}
                                     variant="filled"
                                     label={voucher?.code}
                                     size="small"

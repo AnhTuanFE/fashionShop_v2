@@ -298,6 +298,10 @@ export default function ModalAddCategoryParent({ isOpenModal, handleOpenModal })
                 variant={inputPropsConstants.variantContained}
                 size="small"
                 startIcon={<AddIcon />}
+                sx={{
+                  bgcolor: 'var(--primary-btn-color)',
+                  '&:hover': { bgcolor: 'var(--primary-btn-color-hover)' },
+                }}
               >
                 Thêm thể loại
               </LoadingButton>

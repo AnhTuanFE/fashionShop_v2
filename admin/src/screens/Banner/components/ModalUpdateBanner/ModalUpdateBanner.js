@@ -130,6 +130,10 @@ function ModalUpdateBanner({ banner, setBanner }) {
               type="submit"
               variant={inputPropsConstants.variantContained}
               startIcon={<SaveIcon />}
+              sx={{
+                bgcolor: 'var(--primary-btn-color)',
+                '&:hover': { bgcolor: 'var(--primary-btn-color-hover)' },
+              }}
             >
               Cập nhật
             </LoadingButton>

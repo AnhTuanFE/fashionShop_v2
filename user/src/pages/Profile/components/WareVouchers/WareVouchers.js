@@ -88,7 +88,6 @@ export default function WareVouchers() {
     return (
         <Fragment>
             <div className={`${styles.container} col-12`}>
-
                 <CardHeader
                     sx={{ display: 'flex', alignItems: 'center' }}
                     title={
@@ -108,6 +107,9 @@ export default function WareVouchers() {
                                 variant="contained"
                                 size="medium"
                                 onClick={handleSaveVoucher}
+                                sx={{
+                                    bgcolor: 'var(--primary-btn-color)',
+                                }}
                             >
                                 Lưu
                             </LoadingButton>
@@ -136,7 +138,6 @@ export default function WareVouchers() {
                                 <Voucher size="medium" voucher={voucher} myVoucher />
                             </div>
                         );
-
                     })}
                 </StyledCardContent>
             </div>

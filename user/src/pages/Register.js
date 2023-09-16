@@ -245,7 +245,13 @@ const Register = () => {
                     variant="contained"
                     color="primary"
                     size="large"
-                    sx={{ width: '100%', mt: 1, mb: 2 }}
+                    sx={{
+                        width: '100%',
+                        mt: 1,
+                        mb: 2,
+                        bgcolor: 'var(--primary-btn-color)',
+                        '&:hover': { bgcolor: 'var(--primary-btn-color-hover)' },
+                    }}
                 >
                     ĐĂNG KÝ
                 </Button>

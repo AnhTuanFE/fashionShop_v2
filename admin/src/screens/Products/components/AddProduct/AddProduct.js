@@ -626,6 +626,10 @@ const AddProduct = (props) => {
                 <Card sx={{ padding: 2 }}>
                   <div className="d-flex align-content-between justify-content-end">
                     <LoadingButton
+                      sx={{
+                        bgcolor: 'var(--primary-btn-color)',
+                        '&:hover': { bgcolor: 'var(--primary-btn-color-hover)' },
+                      }}
                       loading={loadingCreate}
                       type="submit"
                       variant={inputPropsConstants.variantContained}

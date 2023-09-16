@@ -170,7 +170,7 @@ const ModalAddress = ({ addressOld, isOpenModal, handleClose, handleChangeAddres
                                         </ListItem>
                                         {address?.isDefault ? (
                                             <Chip
-                                                sx={{ ml: '46px' }}
+                                                sx={{ ml: '46px', bgcolor: 'var(--primary-btn-color)' }}
                                                 className={stylesProfile.defaultAddressChip}
                                                 color="primary"
                                                 label="Mặc định"
@@ -182,6 +182,9 @@ const ModalAddress = ({ addressOld, isOpenModal, handleClose, handleChangeAddres
                             </div>
                             <Box className="col-12 d-flex justify-content-end pt-2">
                                 <Button
+                                    sx={{
+                                        bgcolor: 'var(--primary-btn-color)',
+                                    }}
                                     disabled={!currentAddress}
                                     variant="contained"
                                     onClick={handleConfirmChangeAddress}

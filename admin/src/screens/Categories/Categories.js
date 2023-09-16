@@ -106,6 +106,10 @@ const Categories = () => {
             startIcon={<AddIcon />}
             onClick={() => handleOpenModalAddCategoryParent(true)}
             size="medium"
+            sx={{
+              bgcolor: 'var(--primary-btn-color)',
+              '&:hover': { bgcolor: 'var(--primary-btn-color-hover)' },
+            }}
           >
             Thêm thể loại
           </Button>

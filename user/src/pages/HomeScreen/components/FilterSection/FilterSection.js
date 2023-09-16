@@ -196,7 +196,16 @@ export default function FilterSection({ setToggleLoad }) {
                     </div>
                     <p style={{ fontSize: '14px', color: 'red' }}>{price.name}</p>
 
-                    <Button variant="contained" sx={{ width: '100%', mt: 1 }} onClick={ApplyHandler}>
+                    <Button
+                        variant="contained"
+                        sx={{
+                            width: '100%',
+                            mt: 1,
+                            bgcolor: 'var(--primary-btn-color)',
+                            '&:hover': { bgcolor: 'var(--primary-btn-color-hover)' },
+                        }}
+                        onClick={ApplyHandler}
+                    >
                         Áp dụng
                     </Button>
                 </div>

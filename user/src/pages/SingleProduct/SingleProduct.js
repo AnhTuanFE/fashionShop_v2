@@ -37,7 +37,9 @@ const RenderPrice = ({ product, value1, value2 }) => {
 const RenderStatus = ({ value1, value2, product }) => {
     if (!value1 || !value2) {
         if (product?.variants?.reduce((count, value) => count + value.quantity, 0) > 0)
-            return <Chip label="Có sẵn" color="primary" sx={{ color: 'white ' }} />;
+            return (
+                <Chip label="Có sẵn" color="primary" sx={{ color: 'white ', bgcolor: 'var(--primary-btn-color)' }} />
+            );
         else
             return <Chip label="Tạm thời hết hàng" color="error" sx={{ color: 'white', backgroundColor: '#d32f2f' }} />;
     } else {
@@ -46,7 +48,9 @@ const RenderStatus = ({ value1, value2, product }) => {
                 (value) => value.attributes?.[0].value === value1 && value.attributes?.[1].value === value2,
             )?.quantity > 0
         ) {
-            return <Chip label="Có sẵn" color="primary" sx={{ color: 'white ' }} />;
+            return (
+                <Chip label="Có sẵn" color="primary" sx={{ color: 'white ', bgcolor: 'var(--primary-btn-color)' }} />
+            );
         } else {
             return <Chip label="Tạm thời hết hàng" color="error" sx={{ color: 'white', backgroundColor: '#d32f2f' }} />;
         }
@@ -335,6 +339,9 @@ const SingleProduct = () => {
                                                                         !(haveQuantityOfCurrentVariant > 0) ||
                                                                         quantity < qty
                                                                     }
+                                                                    sx={{
+                                                                        bgcolor: 'var(--primary-btn-color)',
+                                                                    }}
                                                                     variant="contained"
                                                                     style={{ minWidth: 120 }}
                                                                     onClick={buyProductHandle}

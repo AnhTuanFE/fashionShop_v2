@@ -316,6 +316,9 @@ const CartScreen = () => {
                                 <div className="col-md-5 d-flex justify-content-md-end mt-3 mt-md-0">
                                     <button
                                         data-bs-toggle="modal"
+                                        style={{
+                                            backgroundColor: 'var(--primary-btn-color)',
+                                        }}
                                         // data-bs-target="#staticBackdrop"
                                         onClick={checkOutHandler}
                                     >

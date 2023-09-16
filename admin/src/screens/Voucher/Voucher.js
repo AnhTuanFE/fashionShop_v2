@@ -34,7 +34,15 @@ export default function Voucher() {
       <div className={styles.header}>
         <h2 className={styles.title}>Danh sách mã giảm giá</h2>
         <Link to="/vouchers/add">
-          <Button type="submit" variant={inputPropsConstants.variantContained} startIcon={<AddIcon />}>
+          <Button
+            sx={{
+              bgcolor: 'var(--primary-btn-color)',
+              '&:hover': { bgcolor: 'var(--primary-btn-color-hover)' },
+            }}
+            type="submit"
+            variant={inputPropsConstants.variantContained}
+            startIcon={<AddIcon />}
+          >
             Tạo mã
           </Button>
         </Link>

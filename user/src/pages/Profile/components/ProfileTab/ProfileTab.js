@@ -254,7 +254,7 @@ const ProfileTab = () => {
 
                 <div className=" btn-update-profile">
                     <LoadingButton
-                        sx={{ width: '100%' }}
+                        sx={{ width: '100%', bgcolor: 'var(--primary-btn-color)' }}
                         loading={updateLoading}
                         type="submit"
                         variant={inputPropsConstants.variantContained}

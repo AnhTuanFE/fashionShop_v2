@@ -131,7 +131,15 @@ const Products = () => {
           <h2 className="content-title">Danh sách sản phẩm</h2>
           <div>
             <Link to="/products/add">
-              <Button type="submit" variant={inputPropsConstants.variantContained} startIcon={<AddIcon />}>
+              <Button
+                sx={{
+                  bgcolor: 'var(--primary-btn-color)',
+                  '&:hover': { bgcolor: 'var(--primary-btn-color-hover)' },
+                }}
+                type="submit"
+                variant={inputPropsConstants.variantContained}
+                startIcon={<AddIcon />}
+              >
                 Thêm sản phẩm
               </Button>
             </Link>

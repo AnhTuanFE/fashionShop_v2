@@ -17,7 +17,13 @@ export default function Voucher({ voucherToApply, voucher, handleApplyVoucher, c
                 secondaryAction={
                     <div className={styles.actionWrapper}>
                         <div className={styles.modifyAction}>
-                            <LoadingButton>Lưu</LoadingButton>
+                            <LoadingButton
+                                sx={{
+                                    bgcolor: 'var(--primary-btn-color)',
+                                }}
+                            >
+                                Lưu
+                            </LoadingButton>
                         </div>
                     </div>
                 }

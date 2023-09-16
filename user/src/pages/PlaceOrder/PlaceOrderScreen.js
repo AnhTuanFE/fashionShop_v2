@@ -120,7 +120,14 @@ const PlaceOrderScreen = ({ history }) => {
                     </Typography>
                     <div className="col-1">
                         {address?.isDefault ? (
-                            <Button size="small" variant="outlined" color="error" sx={{ fontSize: '0.6rem' }}>
+                            <Button
+                                size="small"
+                                variant="outlined"
+                                color="error"
+                                sx={{
+                                    fontSize: '0.6rem',
+                                }}
+                            >
                                 Mặc định
                             </Button>
                         ) : null}
@@ -382,7 +389,7 @@ const PlaceOrderScreen = ({ history }) => {
                 <Tooltip title={!address ? 'Bạn chưa chọn địa chỉ giao hàng' : ''}>
                     <div style={{ width: '30%' }}>
                         <LoadingButton
-                            sx={{ width: '100%' }}
+                            sx={{ width: '100%', bgcolor: 'var(--primary-btn-color)' }}
                             type="submit"
                             color="primary"
                             variant="contained"
