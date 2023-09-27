@@ -38,14 +38,16 @@ const Search = ({ value, keyword, width }) => {
     const { getParamValue } = useSearchParamsCustom();
     const debounce = useDebounce(value?.searchValue, 500);
     const [loading, setLoading] = useState(false);
+
     const submitHandler = (e) => {
         e.preventDefault();
-        if (!value?.searchValue) {
+        if (value.searchValue == null || value.searchValue == '' || value.searchValue == undefined) {
             history.push(`/`);
+            return;
         }
         // keyword?.setKeyword(value?.searchValue);
         handleSaveOldKey(value?.searchValue);
-        history.push(`/search?keyword=${value?.searchValue}`);
+        history.push(`/search?keyword=${value.searchValue}`);
         setShowResult(false);
     };
 

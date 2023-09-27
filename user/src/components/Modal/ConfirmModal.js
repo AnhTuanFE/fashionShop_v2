@@ -41,7 +41,7 @@ const ConfirmModal = (data) => {
                                             type="button"
                                             class="btn-close"
                                             aria-label="Close"
-                                            data-bs-dismiss="modal"
+                                            data-dismiss="modal"
                                         ></button>
                                     </div>
                                     <h5
@@ -68,7 +68,7 @@ const ConfirmModal = (data) => {
                                 <button
                                     type="button"
                                     class="btn btn-danger col-2"
-                                    data-bs-dismiss="modal"
+                                    data-dismiss="modal"
                                     // style={{''}}
                                     style={{
                                         width: '5rem',
@@ -82,7 +82,7 @@ const ConfirmModal = (data) => {
                                 <button
                                     type="button"
                                     class="btn btn-outline-primary col-2"
-                                    data-bs-dismiss="modal"
+                                    data-dismiss="modal"
                                     onClick={handleSubmit}
                                     style={{
                                         width: '5rem',

@@ -113,7 +113,15 @@ export default function ResetPass() {
                     </p>
                 ) : null}
 
-                <LoadingButton className=" mt-3" variant="contained" type="submit">
+                <LoadingButton
+                    sx={{
+                        bgcolor: 'var(--primary-btn-color)',
+                        '&:hover': { bgcolor: 'var(--primary-btn-color-hover' },
+                    }}
+                    className=" mt-3"
+                    variant="contained"
+                    type="submit"
+                >
                     Lưu
                 </LoadingButton>
             </form>

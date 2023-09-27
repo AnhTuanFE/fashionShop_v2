@@ -117,7 +117,18 @@ const Login = () => {
                     {loginCheck.password || ''}
                 </Typography>
 
-                <Button type="submit" variant="contained" color="primary" size="large" sx={{ width: '100%', mt: 1 }}>
+                <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    sx={{
+                        width: '100%',
+                        mt: 1,
+                        bgcolor: 'var(--primary-btn-color)',
+                        '&:hover': { bgcolor: 'var(--primary-btn-color-hover)' },
+                    }}
+                >
                     ĐĂNG NHẬP
                 </Button>
                 <p className="d-flex justify-content-end btn__fogot-pass">

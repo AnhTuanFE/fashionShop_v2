@@ -26,7 +26,8 @@ const Header = () => {
         }
     }, []);
 
-    const [searchValue, setSearchValue] = useState(getParamValue('keyword'));
+    // const [searchValue, setSearchValue] = useState(getParamValue('keyword'));
+    const [searchValue, setSearchValue] = useState('');
     const [keyword, setKeyword] = useState('');
     const logoutHandler = () => {
         dispatch(logout(history));
@@ -109,7 +110,7 @@ const Header = () => {
                                                 <i class="fas fa-bars"></i>
                                             </div> */}
                                             <Link className="navbar-brand" to="/">
-                                                <img alt="logo" src="/images/logo.png" />
+                                                <img alt="logo" src="/images/logo2.png" />
                                             </Link>
                                         </div>
                                         {/* {navbar && <NavBar onRemove={removeNavBar}></NavBar>} */}
@@ -173,7 +174,7 @@ const Header = () => {
                                     }}
                                 >
                                     <Link className="navbar-brand" to="/">
-                                        <img alt="logo" src="/images/logo.png" />
+                                        <img alt="logo" src="/images/logo2.png" />
                                     </Link>
                                 </div>
                                 <div

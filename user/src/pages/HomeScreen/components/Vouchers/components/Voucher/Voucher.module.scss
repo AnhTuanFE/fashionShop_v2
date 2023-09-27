@@ -84,7 +84,7 @@
                         transparent calc(0.25rem - 0.0625rem),
                         var(--default-background-color, red) 0,
                         var(--default-background-color, red) 0.25rem,
-                        var(--default-background-color, red) 0
+                        var(--default-voucher-color, red) 0
                     )
                     0 0.0625rem /100% calc(0.25rem * 2 + 0.125rem) repeat-y;
             bottom: calc(0.25rem - 0.0625rem);

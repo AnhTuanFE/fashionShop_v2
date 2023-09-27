@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { statusDescription, stepShipping } from '../../../../constants/ordersConstants';
+import { stepShipping } from '../../../../constants/ordersConstants';
 import { formatMoney } from '../../../../utils/formatMoney';
 import { Badge, Chip } from '@mui/material';
 
 const OrderDetailProducts = (props) => {
   const { order, loading } = props;
-  const itemsPrice = 0;
-  const statusOfOrder = order?.statusHistory?.at(-1)?.status || order?.status;
   if (!loading) {
     // Calculate Price
     const addDecimals = (num) => {
@@ -63,7 +61,7 @@ const OrderDetailProducts = (props) => {
             <td colSpan="8">
               <article className="float-end">
                 <dl className="dlist">
-                  <dt className="text-muted">Trạng thái:</dt>
+                  <dt className="d-flex align-items-center text-muted">Trạng thái:</dt>
                   <dd>
                     <Badge badgeContent={order?.status === 'placed' ? 'Mới' : null} color="error">
                       <Chip

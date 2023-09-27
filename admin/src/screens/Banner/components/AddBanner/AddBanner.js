@@ -96,6 +96,10 @@ export default function AddBanner({ setOpen }) {
             type="submit"
             variant={inputPropsConstants.variantContained}
             startIcon={<AddIcon />}
+            sx={{
+              bgcolor: 'var(--primary-btn-color)',
+              '&:hover': { bgcolor: 'var(--primary-btn-color-hover)' },
+            }}
           >
             Thêm
           </LoadingButton>

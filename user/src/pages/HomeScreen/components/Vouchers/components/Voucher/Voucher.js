@@ -46,7 +46,18 @@ export default function Voucher({ voucher, size = 'small', myVoucher = false }) 
         voucher?.usedBy?.filter((userId) => userId === userInfo?._id)?.length >= voucher?.userUseMaximum || endOfUse;
     const renderCanAdd =
         !myVoucher && !voucher?.isAdd ? (
-            <LoadingButton loading={saveVoucher} onClick={handleSaveVoucher}>
+            <LoadingButton
+                // color="error"
+                sx={{
+                    bgcolor: 'var(--primary-btn-color)',
+                    color: '#ffff',
+                    '&:hover': {
+                        color: 'blue',
+                    },
+                }}
+                loading={saveVoucher}
+                onClick={handleSaveVoucher}
+            >
                 Lưu
             </LoadingButton>
         ) : (
@@ -58,7 +69,7 @@ export default function Voucher({ voucher, size = 'small', myVoucher = false }) 
                 <ListItem sx={{ pr: 0 }}>
                     <div className={styles.voucherTemplate}>
                         <div className={styles.voucherImageWrapper}>
-                            <img src="/images/logo.png" />
+                            <img src="/images/logo2.png" />
                         </div>
                         <div className={styles.cardLeft}>
                             <div className={styles.cardSawToot}></div>
@@ -101,7 +112,7 @@ export default function Voucher({ voucher, size = 'small', myVoucher = false }) 
                         secondary={
                             <Box sx={{ maxWidth: '85%' }}>
                                 <Chip
-                                    sx={{ mr: 1 }}
+                                    sx={{ mr: 1, bgcolor: 'var(--primary-btn-color)' }}
                                     variant="filled"
                                     label={voucher?.code}
                                     size="small"

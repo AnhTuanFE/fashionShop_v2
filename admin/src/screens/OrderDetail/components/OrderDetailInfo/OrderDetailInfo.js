@@ -15,20 +15,25 @@ const OrderDetailInfo = (props) => {
         </Box>
         <Box className="d-flex col-12">
           <Box className="d-flex flex-column col-6">
-            <Typography variant="body1" sx={{ mb: 1 }}>
-              {order?.delivery?.to_name || ''}
+            <Typography variant="body1" sx={{ fontSize: '1rem' }} style={{ display: 'flex' }}>
+              Tên người đặt:
+              <p className="my-0 mx-4 fw-bold">{order?.delivery?.to_name || ''}</p>
             </Typography>
-            <Typography variant="caption" sx={{ fontSize: '1rem' }}>
-              {order?.delivery?.to_phone || ''}
+            <Typography variant="caption" sx={{ fontSize: '1rem' }} style={{ display: 'flex' }}>
+              Số điện thoại:
+              <p className="my-0 mx-4 fw-bold">{order?.delivery?.to_phone || ''}</p>
             </Typography>
 
             <Typography variant="caption" sx={{ fontSize: '1rem' }}>
-              {order?.delivery?.to_address &&
-              order?.delivery?.to_ward_name &&
-              order?.delivery?.to_district_name &&
-              order?.delivery?.to_province_name
-                ? `${order?.delivery?.to_address}, ${order?.delivery?.to_ward_name}, ${order?.delivery?.to_district_name}, ${order?.delivery?.to_province_name}`
-                : null}
+              Địa chỉ:
+              <p className="fw-bold">
+                {order?.delivery?.to_address &&
+                order?.delivery?.to_ward_name &&
+                order?.delivery?.to_district_name &&
+                order?.delivery?.to_province_name
+                  ? `${order?.delivery?.to_address}, ${order?.delivery?.to_ward_name}, ${order?.delivery?.to_district_name}, ${order?.delivery?.to_province_name}`
+                  : null}
+              </p>
             </Typography>
           </Box>
 

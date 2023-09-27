@@ -157,7 +157,14 @@ const AddressTab = () => {
                                 />
                             </ListItem>
                             {address?.isDefault ? (
-                                <Chip className={styles.defaultAddressChip} color="primary" label="Mặc định" />
+                                <Chip
+                                    sx={{
+                                        bgcolor: 'var(--primary-btn-color)',
+                                    }}
+                                    className={styles.defaultAddressChip}
+                                    color="primary"
+                                    label="Mặc định"
+                                />
                             ) : null}
                             <Divider variant="middle" component="li" />
                         </Fragment>

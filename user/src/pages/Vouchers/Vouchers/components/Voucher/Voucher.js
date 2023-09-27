@@ -17,14 +17,20 @@ export default function Voucher({ voucherToApply, voucher, handleApplyVoucher, c
                 secondaryAction={
                     <div className={styles.actionWrapper}>
                         <div className={styles.modifyAction}>
-                            <LoadingButton>Lưu</LoadingButton>
+                            <LoadingButton
+                                sx={{
+                                    bgcolor: 'var(--primary-btn-color)',
+                                }}
+                            >
+                                Lưu
+                            </LoadingButton>
                         </div>
                     </div>
                 }
             >
                 <div className={styles.voucherTemplate}>
                     <div className={styles.voucherImageWrapper}>
-                        <img src="/images/logo.png" />
+                        <img src="/images/logo2.png" />
                     </div>
                     <div className={styles.cardLeft}>
                         <div className={styles.cardSawToot}></div>

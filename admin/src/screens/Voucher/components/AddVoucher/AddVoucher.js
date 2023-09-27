@@ -362,6 +362,10 @@ export default function AddVoucher() {
               </Button>
             </Link>
             <LoadingButton
+              sx={{
+                bgcolor: 'var(--primary-btn-color)',
+                '&:hover': { bgcolor: 'var(--primary-btn-color-hover)' },
+              }}
               loading={loadingAdd}
               type="submit"
               variant={inputPropsConstants.variantContained}

@@ -18,9 +18,7 @@ export default function Product({ product, findSimilar = true }) {
                     <div class={styles.discountFlag}>
                         <div class={styles.discountFlagWrapper}>
                             <Typography class={styles.percent} fontSize={10} noWrap variant="inherit" color="white">
-
                                 {percentDiscount < 100 ? percentDiscount : 99} %
-
                             </Typography>
 
                             <span class={styles.label}>giảm</span>
@@ -70,7 +68,16 @@ export default function Product({ product, findSimilar = true }) {
                                     }),
                                 );
                             }}
-                            sx={{ borderRadius: '0', width: '100%', zIndex: 3, fontSize: '0.8rem' }}
+                            sx={{
+                                borderRadius: '0',
+                                width: '100%',
+                                zIndex: 3,
+                                fontSize: '0.8rem',
+                                bgcolor: 'var(--primary-btn-color)',
+                                '&:hover': {
+                                    bgcolor: 'var(--primary-btn-color)',
+                                },
+                            }}
                             size="small"
                             color="primary"
                             variant="contained"

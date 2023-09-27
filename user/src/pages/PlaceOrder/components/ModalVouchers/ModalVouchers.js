@@ -163,6 +163,10 @@ const ModalVouchers = ({ voucherToApply, isOpenModal, handleClose, handleApplyVo
                             </div>
                             <Box className="col-12 d-flex justify-content-end pt-2">
                                 <Button
+                                    sx={{
+                                        bgcolor: 'var(--primary-btn-color)',
+                                        '&:hover': { bgcolor: 'var(--primary-btn-color-hover)' },
+                                    }}
                                     disabled={!currentVoucher}
                                     variant="contained"
                                     onClick={handleConfirmChangeAddress}

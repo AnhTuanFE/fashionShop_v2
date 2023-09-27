@@ -94,7 +94,12 @@ export default function ForgotPass() {
                         variant="contained"
                         color="primary"
                         size="large"
-                        sx={{ width: '100%', mt: 2 }}
+                        sx={{
+                            width: '100%',
+                            mt: 2,
+                            '&:hover': { bgcolor: 'var(--primary-btn-color-hover)' },
+                            bgcolor: 'var(--primary-btn-color)',
+                        }}
                     >
                         LẤY LẠI MẬT KHẨU
                     </Button>

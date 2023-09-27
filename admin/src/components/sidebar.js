@@ -7,7 +7,12 @@ const Sidebar = () => {
       <aside className="navbar-aside" id="offcanvas_aside">
         <div className="aside-top">
           <Link to="/" className="brand-wrap">
-            <img src="/images/logo.png" style={{ height: '46' }} className="logo" alt="Ecommerce dashboard template" />
+            <img
+              src="/images/logo2.png"
+              style={{ height: '64px', marginLeft: '12px' }}
+              className="logo"
+              alt="Ecommerce dashboard template"
+            />
           </Link>
           <div>
             <button className="btn btn-icon btn-aside-minimize">

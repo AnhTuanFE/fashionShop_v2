@@ -125,7 +125,7 @@ export const UpdatePasswordTab = () => {
             <div className=" btn-update-profile">
                 <LoadingButton
                     loading={loadingUpdate}
-                    sx={{ width: '100%', mt: 2 }}
+                    sx={{ width: '100%', mt: 2, bgcolor: 'var(--primary-btn-color)' }}
                     type="submit"
                     variant={inputPropsConstants.variantContained}
                     size="medium"
