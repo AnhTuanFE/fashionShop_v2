@@ -7,7 +7,7 @@ import useSingleProduct from './hook/useSingleProduct';
 import styles from './SingleProduct.module.scss';
 import { Button, Chip, CircularProgress, Rating, Tooltip, Typography, styled } from '@mui/material';
 import GppGoodIcon from '@mui/icons-material/GppGood';
-import { formatMoney } from '~/utils/formatMoney';
+import { formatMoney, formatTotalSales } from '~/utils/formatMoney';
 import Review from './components/Review/Review';
 import ReactQuill from 'react-quill';
 import SliderOfProductImage from './components/SliderOfProductImage/SliderOfProductImage';
@@ -34,6 +34,7 @@ const RenderPrice = ({ product, value1, value2 }) => {
         </Fragment>
     );
 };
+
 const RenderStatus = ({ value1, value2, product }) => {
     if (!value1 || !value2) {
         if (product?.variants?.reduce((count, value) => count + value.quantity, 0) > 0)
@@ -155,10 +156,34 @@ const SingleProduct = () => {
                                                 variant="body2"
                                                 color="black"
                                                 sx={{
+                                                    pr: 1,
+                                                    mr: 1,
+                                                    borderRight: '1px solid var(--border-color)',
+                                                }}
+                                            >
+                                                Đánh giá
+                                            </Typography>
+
+                                            <Typography
+                                                noWrap
+                                                variant="body2"
+                                                color="black"
+                                                sx={{
                                                     mr: 1,
                                                 }}
                                             >
-                                                đánh giá
+                                                {formatTotalSales(product?.totalSales)}
+                                            </Typography>
+                                            <Typography
+                                                noWrap
+                                                variant="body2"
+                                                color="black"
+                                                sx={{
+                                                    pr: 1,
+                                                    mr: 1,
+                                                }}
+                                            >
+                                                Đã bán
                                             </Typography>
                                         </div>
                                     </div>

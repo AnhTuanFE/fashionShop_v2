@@ -2,7 +2,7 @@ import { Button, Rating, Tooltip, Typography } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Product.module.scss';
-import { formatMoney } from '~/utils/formatMoney';
+import { formatMoney, formatTotalSales } from '~/utils/formatMoney';
 import { useDispatch } from 'react-redux';
 import { getSimilarProduct } from '~/Redux/Actions/productActions';
 export default function Product({ product, findSimilar = true }) {
@@ -51,10 +51,10 @@ export default function Product({ product, findSimilar = true }) {
                         size="small"
                         readOnly
                         value={product.rating}
-                        text={`${product.numReviews} đánh giá`}
+                        text={`${product.numReviews} Đánh giá`}
                     />
                     <Typography noWrap variant="body2" color="black" sx={{ mb: 1 }}>
-                        TP. Hồ Chí Minh
+                        {`Đã bán ${formatTotalSales(product.totalSales)}`}
                     </Typography>
                 </div>
                 {findSimilar ? (
