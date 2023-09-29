@@ -8,8 +8,8 @@ const Footer = () => {
                     <div className="col-lg-3 col-md-6 col-sm-12 center">
                         <h1 className="footer-hearder">Thiết kế</h1>
                         <ul className="footer-list">
-                            <li>Pham Thanh Son</li>
-                            <li>Nguyễn Khắc Tuấn</li>
+                            <li>Nguyễn Trần Dương</li>
+                            <li>Nguyễn Trí Hải</li>
                         </ul>
                     </div>
                     <div className="col-lg-3 col-md-6 col-sm-12 center">
