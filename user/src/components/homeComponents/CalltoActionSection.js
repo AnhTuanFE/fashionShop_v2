@@ -7,10 +7,11 @@ const CalltoActionSection = () => {
                 <div className="row">
                     <div className="col-xs-12">
                         <div className="subscribe-head">
-                            <h2 className="text-shadow-title">Bạn cần nhiều tip hơn</h2>
-                            <p className="text-shadow-description">Đăng ký miễn phí bên dưới để nhận những tip mới nhất</p>
+                            <h2 className="text-shadow-title">Đa dạng mẫu mã</h2>
+                            <p className="text-shadow-description">
+                                Nhanh tay đăng ký để được trải nghiệm những ưu đãi bất ngờ
+                            </p>
                             <form className="form-section">
-                                <input placeholder="Email..." name="email" type="email" />
                                 <input value="Có tôi muốn!" name="subscribe" type="submit" />
                             </form>
                         </div>
@@ -19,6 +20,10 @@ const CalltoActionSection = () => {
             </div>
         </div>
     );
+};
+
+const redirectToRegister = () => {
+    window.location.href = '/register';
 };
 
 export default CalltoActionSection;
