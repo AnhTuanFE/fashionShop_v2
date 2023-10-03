@@ -165,7 +165,7 @@ textarea:focus {
 .mobile-header {
     display: none;
 }
-.header-text-register:hover ,
+.header-text-register:hover,
 .header-text-login:hover {
     opacity: 0.5;
 }
@@ -276,8 +276,8 @@ textarea:focus {
 /* NEWSLATTER */
 .subscribe-section {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.226), rgba(0, 0, 0, 0.226)),
-        url('https://bizweb.dktcdn.net/100/372/651/themes/802187/assets/slider_1.jpg?1638761605779') no-repeat scroll
-            center / cover;
+        url('https://res.cloudinary.com/nocompanyforsure/image/upload/v1696327913/xdt4fc43mtifectmlbha.jpg') no-repeat
+            scroll center / cover;
     padding: 100px 0 100px;
     width: 100vw;
 }
@@ -288,16 +288,14 @@ textarea:focus {
     line-height: 30px;
     margin: 0 0 13px;
     text-transform: uppercase;
-    text-shadow: 2px 8px 4px rgba(0,0,0,0.3), 
-    0px -4px 10px rgba(255,255,255,0.3);
+    text-shadow: 2px 8px 4px rgba(0, 0, 0, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3);
 }
 .subscribe-head p {
     color: #fff;
     font-size: 18px;
     line-height: 22px;
     margin: 0 0 39px;
-    text-shadow: 2px 8px 4px rgba(0,0,0,0.3), 
-    0px -4px 10px rgba(255,255,255,0.3);
+    text-shadow: 2px 8px 4px rgba(0, 0, 0, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3);
 }
 .subscribe-head {
     text-align: center;
