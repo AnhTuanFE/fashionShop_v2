@@ -57,7 +57,7 @@ export const UploadImageProduct = (props) => {
   const itemTemplate = (file, props) => {
     return (
       <div className="flex align-items-center flex-wrap  " style={{ display: 'flex', height: '150px' }}>
-        <div className="flex align-items-center  d-flex " style={{ width: '90%', display: 'flex' }}>
+        <div className="flex align-items-center d-flex " style={{ width: '90%', display: 'flex' }}>
           <img alt={file.name} role="presentation" src={file.objectURL} height={150} />
           <span
             className="flex  text-left justify-content-start"
@@ -69,7 +69,6 @@ export const UploadImageProduct = (props) => {
               textAlign: 'start',
               textOverflow: 'ellipsis',
               overflow: 'hidden',
-              // height: '110px',
               whiteSpace: 'nowrap',
             }}
           >
@@ -122,7 +121,7 @@ export const UploadImageProduct = (props) => {
   const cancelOptions = {
     icon: 'pi pi-fw pi-times',
     iconOnly: true,
-    className: 'custom-cancel-btn p-button-danger p-button-rounded p-button-outlined',
+    className: 'custom-cancel-btn p-button-danger rounded-btn p-button-outlined',
   };
 
   return (
@@ -130,7 +129,6 @@ export const UploadImageProduct = (props) => {
       <Toast ref={toast}></Toast>
 
       <Tooltip target=".custom-choose-btn" content="Choose" position="bottom" />
-
       <Tooltip target=".custom-cancel-btn" content="Clear" position="bottom" />
 
       <div className="col-12">
