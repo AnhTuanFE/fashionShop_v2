@@ -941,6 +941,9 @@ ul.row-sm {
 .header-color {
   background-color: var(--primary-color);
 }
+.rounded-btn {
+  border-radius: 20px;
+}
 /* pagition */
 .page-item {
   margin: 0 8px;

@@ -85,7 +85,7 @@ export const UploadBanner = (props) => {
   const cancelOptions = {
     icon: 'pi pi-fw pi-times',
     iconOnly: true,
-    className: 'custom-cancel-btn p-button-danger p-button-rounded p-button-outlined',
+    className: 'custom-cancel-btn p-button-danger rounded-btn p-button-outlined',
   };
 
   return (
