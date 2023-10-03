@@ -89,9 +89,9 @@ const OrderDetail = () => {
                   Nhận hàng dự kiến vào: <p>{moment(order?.delivery?.leadTime).format('hh:mm DD/MM/YYYYY')} </p>
                 </Typography>
                 {order?.expiredAt ? (
-                  <Typography variant="body2" color="error" className='mx-4'>
+                  <Typography variant="body2" color="error" className="mx-4">
                     Hết hạn vào:
-                    <p>{moment(order?.delivery?.leadTime).format('hh:mm DD/MM/YYYY')}</p>
+                    <p>{moment(order?.expiredAt).format('hh:mm DD/MM/YYYY')}</p>
                   </Typography>
                 ) : null}
               </div>
